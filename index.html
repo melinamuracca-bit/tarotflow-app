@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#0a0610">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Entrenador Tarot">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>Tarot Flow</title>
+<style>
+:root{--bg:#0a0610;--panel:#120b1d;--panel2:#1a1028;--violet:#8b5cf6;--violet2:#6d28d9;--gold:#d6a94f;--cream:#f5efe4;--muted:#b9aec7;--line:#2a1c3e;--ok:#43d19e}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 80% 0,#231037 0,transparent 28%),linear-gradient(180deg,#08040e,#0c0713 65%,#08040e);color:#fff;min-height:100vh}
+button,input,textarea,select{font:inherit}.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.side{border-right:1px solid var(--line);background:rgba(8,4,14,.92);padding:24px 18px;position:sticky;top:0;height:100vh}.brand{display:flex;gap:12px;align-items:center;margin-bottom:30px}.brandmark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--violet));display:grid;place-items:center;font-size:22px;box-shadow:0 0 28px rgba(139,92,246,.28)}.brand h1{font-size:17px;margin:0}.brand small{color:var(--muted)}.nav{display:grid;gap:8px}.nav button{border:0;background:transparent;color:#d9d1e4;text-align:left;padding:12px 14px;border-radius:12px;cursor:pointer}.nav button.active,.nav button:hover{background:#1b1128;color:#fff}.pill{margin-top:22px;padding:13px;border:1px solid #3a2855;border-radius:14px;background:#130b20}.pill strong{color:var(--gold)}.main{padding:28px 32px 50px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.top h2{margin:0;font-size:30px}.top p{margin:6px 0 0;color:var(--muted)}.user{padding:10px 14px;border:1px solid var(--line);border-radius:999px;color:#ddd;background:#110a1a}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{background:linear-gradient(180deg,rgba(28,17,42,.96),rgba(17,10,28,.96));border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 40px rgba(0,0,0,.18)}.card h3{margin:4px 0 8px}.muted{color:var(--muted)}.cta{border:0;border-radius:14px;padding:13px 18px;background:linear-gradient(90deg,var(--violet2),var(--violet));color:white;font-weight:800;cursor:pointer;box-shadow:0 8px 30px rgba(109,40,217,.3)}.cta.gold{background:linear-gradient(90deg,#b7842b,var(--gold));color:#160d0a}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;margin-bottom:20px}.hero .big{padding:28px;background:linear-gradient(135deg,#1a0f27,#24103b 55%,#12091d);border:1px solid #3c2356;border-radius:22px;min-height:220px;position:relative;overflow:hidden}.hero .big:after{content:'✦';position:absolute;right:24px;bottom:-10px;font-size:170px;color:rgba(214,169,79,.08)}.hero h3{font-size:30px;margin:0 0 10px}.hero p{max-width:640px;color:#cfc4d9;line-height:1.55}.stat{display:grid;place-items:center;text-align:center}.stat strong{font-size:36px;color:var(--gold)}.section{display:none}.section.active{display:block}.steps{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.step{padding:8px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}.step.on{color:white;background:#24123b;border-color:#6d28d9}.formrow{display:grid;gap:8px;margin-bottom:16px}.formrow label{font-weight:700}.input,textarea,select{width:100%;background:#0e0816;color:white;border:1px solid #34224d;border-radius:12px;padding:12px 14px;outline:none}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:10px 13px;border:1px solid #3a2754;border-radius:999px;cursor:pointer;background:#130b1d;color:#ddd}.chip.on{background:#5b21b6;border-color:#8b5cf6;color:#fff}.spread-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.spread{padding:15px;border:1px solid #35224c;border-radius:15px;background:#110a1a;cursor:pointer}.spread.on{border-color:#8b5cf6;box-shadow:0 0 0 1px #8b5cf6 inset}.spread small{color:var(--muted)}.slots{display:grid;gap:12px}.slot{display:grid;grid-template-columns:160px 1fr 140px;gap:10px;align-items:center;background:#110a1a;border:1px solid var(--line);padding:12px;border-radius:14px}.slot strong{color:var(--gold)}.combo{position:relative}.combo-input{padding-right:42px}.combo-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--gold);font-size:18px;cursor:pointer}.combo-menu{position:absolute;z-index:30;top:calc(100% + 6px);left:0;right:0;max-height:320px;overflow:auto;border:1px solid #46305f;border-radius:14px;background:#0d0714;box-shadow:0 20px 50px rgba(0,0,0,.5);display:none}.combo.open .combo-menu{display:block}.combo-head{position:sticky;top:0;padding:8px 12px;background:#1c102a;color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.5px}.combo-option{padding:10px 12px;cursor:pointer;border-top:1px solid #1d1329}.combo-option:hover,.combo-option.active{background:#25143a}.combo-empty{padding:14px;color:var(--muted)}.result{display:grid;gap:14px}.result .block{background:#110a1a;border:1px solid var(--line);border-radius:16px;padding:18px}.tag{display:inline-block;background:#2b1747;color:#e6dcff;border:1px solid #6f40b9;padding:5px 8px;border-radius:999px;font-size:12px}.library-wrap{display:grid;gap:24px}.libgroup{display:grid;gap:12px}.libgroup-title{display:flex;align-items:center;gap:10px;margin:4px 0 2px;font-size:20px}.libgroup-title span{color:var(--gold);font-size:12px;border:1px solid #5a3e28;background:#1a120d;padding:4px 8px;border-radius:999px}.library{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.libcard{padding:14px;border:1px solid var(--line);border-radius:14px;background:#100919}.libcard b{display:block}.libcard small{color:var(--muted)}.history{display:grid;gap:10px}.history .row{display:flex;justify-content:space-between;gap:16px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#100919;cursor:pointer;transition:.18s ease}.history .row:hover{border-color:#68409a;background:#150d20;transform:translateY(-1px)}.history-main{min-width:0;flex:1}.history-actions{display:flex;align-items:flex-start;gap:8px}.history-btn{border:1px solid #402b5b;background:#191025;color:#eee;border-radius:10px;padding:8px 10px;cursor:pointer;font-weight:700}.history-btn:hover{background:#25153a}.history-btn.danger{border-color:#633044;color:#ffb7c5}.history-btn.danger:hover{background:#2b101b}.history-date{display:block;margin-top:7px}.direct-answer{border-color:#694893!important;background:linear-gradient(135deg,rgba(48,25,72,.9),rgba(17,10,28,.96))!important}.direct-answer h3{font-size:23px}.narrative{border-color:#3a2c51!important}.narrative p{margin:9px 0}.narrative strong{color:#f0dcac}.reading-note{padding:10px 12px;border-radius:11px;background:#0d0814;border:1px solid #261936;margin-top:10px;color:#d5cadf}.question-focus{color:#ead9ff}.history-open-note{font-size:12px;color:#a997ba;margin-top:5px}.manualbox{max-width:720px}.notice{padding:12px 14px;border-left:3px solid var(--gold);background:#171020;color:#ddd;border-radius:10px;margin:14px 0}.footer{margin-top:30px;color:#7f738d;font-size:12px;text-align:center}
+
+.reading-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.reading-grid .block{height:100%}.block p{line-height:1.62}.analysis-list{margin:10px 0 0;padding-left:20px;color:#d8cfdf;display:grid;gap:10px}.relations{display:grid;gap:10px;margin-top:12px}.relation{padding:13px 14px;border:1px solid #2d1d42;border-radius:13px;background:#0d0715}.relation b{color:#fff}.relation p{margin:7px 0 0;color:#c8bdd2}.badge-soft{display:inline-block;margin-left:8px;padding:3px 7px;border-radius:999px;font-size:11px;color:#dccbff;background:#24123b;border:1px solid #5d3690}.global-reading{border-color:#6a4826!important;background:linear-gradient(180deg,rgba(39,24,20,.75),rgba(17,10,28,.96))!important}.reading-context small{display:block;margin-top:12px}.libcard small{line-height:1.45}.libcard small strong{color:#d7c9e6}@media(max-width:900px){.reading-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line)}.nav{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.grid,.spread-grid,.library{grid-template-columns:1fr 1fr}.slot{grid-template-columns:1fr}.main{padding:22px 16px}}
+@media(max-width:560px){.grid,.spread-grid{grid-template-columns:1fr}.top{align-items:flex-start;gap:12px;flex-direction:column}.hero h3{font-size:25px}}
+
+/* v1.0 */
+.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:radial-gradient(circle at 50% 0,#2a1245 0,#08040e 60%)}.gate .card{max-width:420px;width:100%;text-align:center}.gate .brandmark{margin:0 auto 14px;width:58px;height:58px;font-size:30px}.gate input{text-align:center;letter-spacing:2px;text-transform:uppercase;margin:14px 0}.gate .err{color:#ffb7c5;min-height:20px;font-size:14px}
+.tcard{display:block;width:100%;aspect-ratio:7/12;object-fit:cover;border-radius:10px;border:1px solid #4a3366;background:#1a1028;box-shadow:0 8px 24px rgba(0,0,0,.35)}.tcard.rev{transform:rotate(180deg)}.tcard.ph{display:grid;place-items:center;text-align:center;font-size:12px;padding:6px;color:var(--gold);background:linear-gradient(160deg,#24123b,#120a1c)}.tcard-wrap{width:96px;flex:0 0 auto}.tcard-wrap.sm{width:70px}.tcard-wrap.lg{width:180px;margin:0 auto}
+.with-img{display:flex;gap:14px;align-items:flex-start}.with-img>div:last-child{flex:1;min-width:0}
+.drawn{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}.drawn figure{margin:0;width:110px;text-align:center}.drawn figcaption{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.3}
+.libcard{cursor:pointer;transition:.15s}.libcard:hover{border-color:#6f40b9}.libcard img{margin-bottom:10px}
+.library{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))!important}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(5,2,10,.78);display:none;place-items:center;padding:16px}.modal.open{display:grid}.modal .card{max-width:640px;width:100%;max-height:90vh;overflow:auto;position:relative}.modal .close{position:absolute;right:12px;top:10px;background:transparent;border:0;color:#fff;font-size:26px;cursor:pointer}
+.opts{display:grid;gap:10px;margin-top:14px}.opt{text-align:left;padding:14px;border-radius:12px;border:1px solid #3a2754;background:#130b1d;color:#eee;cursor:pointer;line-height:1.45}.opt:hover{border-color:#8b5cf6}.opt.ok{background:#0f2a20;border-color:var(--ok)}.opt.bad{background:#2b101b;border-color:#e0607a}.opt-imgs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.opt-imgs .opt{padding:8px;text-align:center;font-size:12px}
+.bar{height:10px;border-radius:999px;background:#1d1329;overflow:hidden}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--violet2),var(--gold))}
+.days{display:grid;gap:10px}.day{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;background:#100919}.day .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#1d1230;color:var(--gold);font-weight:800}.day.done .n{background:#0f2a20;color:var(--ok)}.week-title{margin:18px 0 6px;color:var(--gold);font-weight:800;letter-spacing:.5px;font-size:13px}
+.checks{display:grid;gap:8px;margin:12px 0}.checks label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid #2d1d42;border-radius:12px;background:#0d0715;cursor:pointer}.checks input{margin-top:4px;accent-color:#8b5cf6}
+.hint{padding:10px 12px;border-radius:11px;margin-top:8px;font-size:14px;line-height:1.5}.hint.ok{background:#0f2a20;border:1px solid #1f5a42}.hint.miss{background:#2a1d0c;border:1px solid #6a4826}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.kpi{text-align:center}.kpi strong{display:block;font-size:30px;color:var(--gold)}.kpi small{color:var(--muted)}
+.row2{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.ghost{border:1px solid #402b5b;background:#191025;color:#eee;border-radius:12px;padding:11px 14px;cursor:pointer;font-weight:700}.ghost:hover{background:#25153a}
+.guide p,.guide li{line-height:1.6;color:#ddd}.guide .card{margin-bottom:14px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#24123b;border:1px solid #6d28d9;color:#fff;padding:10px 16px;border-radius:12px;z-index:200;display:none}
+.main,.side,.section,.card,.block{min-width:0}textarea,.input{max-width:100%}
+@media(max-width:900px){.app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;align-content:start}.nav{display:flex;overflow-x:auto;gap:6px;padding-bottom:4px}.nav button{white-space:nowrap;padding:10px 12px;background:#140c1f}.pill{display:none}.brand{margin-bottom:14px}.side{padding:14px 16px}.kpis{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.opt-imgs{grid-template-columns:1fr 1fr}.tcard-wrap{width:78px}.tcard-wrap.lg{width:150px}.drawn figure{width:calc(33% - 8px)}.day{grid-template-columns:40px 1fr}.day .ghost,.day .cta{grid-column:1/-1}.library{grid-template-columns:1fr 1fr!important}}
+</style>
+</head>
+<body>
+<div class="gate" id="gate" style="display:none">
+  <div class="card">
+    <div class="brandmark">🔮</div>
+    <h2 style="margin:0">Tarot Flow</h2>
+    <p class="muted">Ingresa el código de acceso que recibiste por email después de la compra.</p>
+    <input class="input" id="gateCode" placeholder="CÓDIGO" autocomplete="off" onkeydown="if(event.key==='Enter')unlock()">
+    <div class="err" id="gateErr"></div>
+    <button class="cta" style="width:100%" onclick="unlock()">Entrar</button>
+  </div>
+</div>
+<div class="app">
+<aside class="side">
+  <div class="brand"><div class="brandmark">🔮</div><div><h1>Tarot Flow</h1><small>Método C.L.A.R.O.</small></div></div>
+  <div class="nav">
+    <button class="active" data-go="inicio">⌂ Inicio</button>
+    <button data-go="plan">🗓 Plan 21 días</button>
+    <button data-go="entrenar">🎯 Entrenar</button>
+    <button data-go="tirada">✦ Leer mi tirada</button>
+    <button data-go="biblioteca">🃏 Las 78 cartas</button>
+    <button data-go="historial">◷ Mis lecturas</button>
+    <button data-go="terapeutico">🌙 Terapéutico</button>
+    <button data-go="progreso">📈 Mi progreso</button>
+    <button data-go="manual">📖 Guía</button>
+  </div>
+  <div class="pill"><small>Tu objetivo</small><br><strong>Interpretar con claridad</strong><div class="muted" style="margin-top:6px;font-size:13px">Menos memoria. Más conexión.</div></div>
+</aside>
+<main class="main">
+<section id="inicio" class="section active">
+  <div class="top"><div><h2>Tu espacio de práctica</h2><p>10 minutos por día alcanzan para dejar de quedarte en blanco.</p></div><div class="user" id="streakPill">🔥 Racha: 0 días</div></div>
+  <div class="hero">
+    <div class="big"><span class="tag">TU PRÓXIMO PASO</span><h3 id="nextTitle">Día 1 del plan</h3><p id="nextText">Empieza por el principio: una carta, una pregunta y tu primera lectura escrita.</p><button class="cta" onclick="openNextDay()">Hacer la práctica de hoy</button></div>
+    <div class="card" id="dailyBox"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="tag">ENTRENAR</span><h3>Practica una lectura</h3><p class="muted">La app te da pregunta y cartas. Tú lees primero, después comparas con el Entrenador.</p><button class="ghost" onclick="navigate('entrenar')">Entrenar ahora</button></div>
+    <div class="card"><span class="tag">MEMORIA VISUAL</span><h3>Flash de cartas</h3><p class="muted">Rondas de 10 cartas. Las que más te cuestan vuelven más seguido.</p><button class="ghost" onclick="startQuiz({})">Empezar ronda</button></div>
+    <div class="card"><span class="tag">LEER</span><h3>Lee tu tirada real</h3><p class="muted">Carga las cartas de tu mazo y el Entrenador te ordena la lectura.</p><button class="ghost" onclick="navigate('tirada')">Cargar tirada</button></div>
+  </div>
+</section>
+
+<section id="plan" class="section">
+  <div class="top"><div><h2>Plan de 21 días</h2><p>Tres semanas: conocer las cartas, conectarlas y leer con confianza. Cada día dura 10 a 15 minutos.</p></div><div class="user" id="planPill">0 / 21</div></div>
+  <div class="bar" style="margin-bottom:10px"><i id="planBar" style="width:0"></i></div>
+  <div class="days" id="days"></div>
+</section>
+
+<section id="entrenar" class="section">
+  <div class="top"><div><h2>Entrenar</h2><p>Primero lees tú. Después el Entrenador te muestra lo que viste y lo que se te pasó.</p></div></div>
+  <div id="trainMenu">
+    <div class="grid">
+      <div class="card"><span class="tag">1 CARTA</span><h3>Lectura rápida</h3><p class="muted">Ideal para empezar o para el día a día.</p><button class="cta" onclick="startPractice({spread:0})">Practicar</button></div>
+      <div class="card"><span class="tag">3 CARTAS</span><h3>Historia breve</h3><p class="muted">Situación, obstáculo y consejo. La base de todo.</p><button class="cta" onclick="startPractice({spread:3})">Practicar</button></div>
+      <div class="card"><span class="tag">5 CARTAS</span><h3>Lectura profunda</h3><p class="muted">Amor, trabajo, dinero, propósito o decisión.</p><button class="cta" onclick="startPractice({spread:[4,6,8,9,10][Math.floor(Math.random()*5)]})">Practicar</button></div>
+    </div>
+    <div class="grid" style="margin-top:18px">
+      <div class="card"><span class="tag">FLASH</span><h3>Significados</h3><p class="muted">Ves la carta y eliges qué significa.</p><button class="ghost" onclick="startQuiz({})">Las 78</button> <button class="ghost" onclick="startQuiz({majors:true})">Solo Mayores</button></div>
+      <div class="card"><span class="tag">FLASH</span><h3>Invertidas</h3><p class="muted">La parte que más cuesta, en rondas cortas.</p><button class="ghost" onclick="startQuiz({rev:true})">Practicar invertidas</button></div>
+      <div class="card"><span class="tag">REPASO</span><h3>Mis cartas difíciles</h3><p class="muted" id="hardCount">Las que más fallaste.</p><button class="ghost" onclick="startQuiz({hard:true})">Repasar</button></div>
+    </div>
+  </div>
+  <div id="practiceBox" style="display:none"></div>
+  <div id="quizBox" style="display:none"></div>
+</section>
+
+<section id="tirada" class="section">
+  <div class="top"><div><h2>Leer mi tirada</h2><p>Para tus tiradas reales o las que haces a otras personas.</p></div></div>
+  <div class="steps"><span class="step on" id="s1">1. Contexto</span><span class="step" id="s2">2. Tirada</span><span class="step" id="s3">3. Cartas</span><span class="step" id="s4">4. Lectura</span></div>
+  <div id="w1" class="card">
+    <div class="formrow"><label>¿Sobre qué quieres consultar?</label><div class="chips" id="topics"></div></div>
+    <div class="formrow"><label>Escribe tu pregunta</label><textarea id="question" rows="3" placeholder="Ej.: ¿Qué necesito comprender sobre mi situación laboral actual?"></textarea></div>
+    <button class="cta" onclick="next1()">Continuar</button>
+  </div>
+  <div id="w2" class="card" style="display:none"><div class="spread-grid" id="spreads"></div><div style="margin-top:16px"><button class="cta" onclick="next2()">Continuar</button></div></div>
+  <div id="w3" class="card" style="display:none"><p class="muted" style="margin-top:0">Elige las cartas que te salieron en tu mazo. ¿No tienes el mazo a mano? Sácalas al azar.</p><div class="slots" id="slots"></div><div class="row2" style="margin-top:16px"><button class="cta gold" onclick="buildReading()">Analizar tirada</button><button class="ghost" onclick="drawIntoSlots()">🎴 Sacar cartas al azar</button></div></div>
+  <div id="w4" style="display:none"><div class="result" id="result"></div><div class="row2" style="margin-top:16px"><button class="cta" onclick="saveReading()">Guardar en Mis lecturas</button><button class="ghost" onclick="copyReading()">📋 Copiar lectura</button><button class="ghost" onclick="navigate('tirada')">Nueva tirada</button></div></div>
+</section>
+
+<section id="biblioteca" class="section"><div class="top"><div><h2>Las 78 cartas</h2><p>Toca una carta para ver su ficha completa.</p></div></div><div class="formrow"><input class="input" id="search" placeholder="Buscar carta o idea... Ej.: Emperatriz, 5 de Copas, cambio" oninput="renderLibrary()"></div><div class="library-wrap" id="library"></div></section>
+<section id="historial" class="section"><div class="top"><div><h2>Mis lecturas</h2><p>Tus tiradas y prácticas, guardadas en este dispositivo.</p></div></div><div class="history" id="history"></div></section>
+
+<section id="terapeutico" class="section">
+  <div class="top"><div><h2>Tarot evolutivo y terapéutico</h2><p>Lee procesos internos, no solo situaciones.</p></div></div>
+  <div id="teraBox"></div>
+</section>
+
+<section id="progreso" class="section">
+  <div class="top"><div><h2>Mi progreso</h2><p>Lo que mides, mejora.</p></div></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="card" style="margin-top:18px"><h3>Evolución de tus prácticas</h3><p class="muted">Puntaje C.L.A.R.O. de tus últimas prácticas (de 0 a 5).</p><div id="practiceChart"></div></div>
+  <div class="card" style="margin-top:18px"><h3>Cartas por dominar</h3><p class="muted">Las que más te costaron en el Flash. Toca una para ver su ficha.</p><div class="drawn" id="hardList"></div></div>
+  <div class="card" style="margin-top:18px"><h3>Tu copia de seguridad</h3><p class="muted">Tu progreso vive en este dispositivo. Descarga una copia para pasarlo a otro celularlar o computadora.</p><div class="row2"><button class="ghost" onclick="exportData()">⬇ Descargar copia</button><label class="ghost">⬆ Cargar copia<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label></div></div>
+</section>
+
+<section id="manual" class="section guide">
+  <div class="top"><div><h2>Guía del Entrenador</h2><p>El método, las preguntas y cómo leerle a otras personas.</p></div></div>
+  <div class="card"><h3>Cómo usar el Entrenador para mejorar de verdad</h3><p><b>Lee primero, compara después.</b> El progreso no es que la app acierte por ti: es que cada vez detectes más cosas antes de abrir la devolución.</p><p><b>Rutina de 10 minutos:</b> 2 min para elegir la pregunta · 2 min para tu primera lectura · 3 min con el Entrenador · 2 min para comparar · 1 min para escribir qué aprendiste.</p><a class="ghost" href="manual-entrenador.pdf" target="_blank" style="display:inline-block;text-decoration:none;margin-top:6px">📄 Abrir el Manual en PDF</a></div>
+  <div class="card"><h3>El método C.L.A.R.O.</h3><ul><li><b>C · Contexto:</b> qué se pregunta y qué función cumple cada posición.</li><li><b>L · Lectura individual:</b> qué dice cada carta en ese lugar, no de memoria.</li><li><b>A · Asociaciones:</b> palos, Arcanos Mayores, invertidas, repeticiones.</li><li><b>R · Relación:</b> cómo se conectan y qué historia forman juntas.</li><li><b>O · Observación final:</b> el mensaje en una sola frase.</li></ul></div>
+  <div class="card"><h3>Cuando te quedas en blanco</h3><p>Vuelve a estas cinco preguntas, en orden:</p><ol><li>¿Qué se está preguntando realmente?</li><li>¿Qué función cumple cada posición?</li><li>¿Qué ves en la imagen? Personajes, colores, gestos, hacia dónde miran.</li><li>¿Qué relación hay entre las cartas?</li><li>¿Cómo dirías el mensaje completo en una frase?</li></ol></div>
+  <div class="card"><h3>Preguntas que abren y preguntas que cierran</h3><p><b>Abren:</b> ¿Qué necesito comprender de esta situación? · ¿Qué está bloqueando este proceso? · ¿Qué puedo hacer para avanzar? · ¿Qué dinámica influye en este vínculo?</p><p><b>Cierran:</b> ¿Me quiere sí o no? · ¿Cuándo exactamente va a pasar? · ¿Voy a ser feliz?</p><p class="muted">Transforma la cerrada en abierta: “¿Me quiere?” → “¿Qué necesito comprender de la dinámica actual de este vínculo?”</p></div>
+  <div class="card"><h3>Qué tirada usar</h3><ul><li>Claridad rápida → 1 carta.</li><li>Ver una secuencia → 3 cartas o Pasado · Presente · Futuro.</li><li>Entre dos opciones → Decisión, dos caminos.</li><li>Un vínculo → Relación o Amor y evolución.</li><li>Trabajo o dinero → sus tiradas de 5 cartas.</li><li>Mirada interior → Sombra y autoconocimiento.</li><li>Lectura profunda → Herradura o Cruz Celta.</li></ul><p class="muted">No agregues cartas porque no te gustó la respuesta: primero revisa la pregunta.</p></div>
+  <div class="card"><h3>Leerle a otras personas, con ética</h3><ul><li><b>El tarot orienta, no decide.</b> Devuelve posibilidades y recursos, no sentencias.</li><li><b>Salud, temas legales o grandes sumas de dinero:</b> el tarot no reemplaza a un médico, a un psicólogo, a un abogado ni a un contador. Dilo con claridad y deriva.</li><li><b>No leas sobre terceros</b> como si pudieras saber lo que piensan. Lee la dinámica y lo que le toca a quien consulta.</li><li><b>Nunca anuncies muertes, enfermedades ni desgracias.</b> Una carta difícil habla de un proceso, no de una tragedia.</li><li><b>Cuida la dependencia:</b> si alguien vuelve todos los días con la misma pregunta, ayúdalo a tomar distancia.</li><li><b>Privacidad:</b> lo que se cuenta en una lectura queda ahí.</li></ul></div>
+  <div class="card"><h3>Cómo devolver una lectura</h3><ol><li><b>Encuadre:</b> “Vamos a mirar qué muestran las cartas sobre tu pregunta.”</li><li><b>Escena:</b> describe lo que se ve antes de interpretar.</li><li><b>Posición por posición</b>, conectando cada carta con la anterior.</li><li><b>Síntesis en una frase.</b></li><li><b>Consejo práctico:</b> algo que la persona pueda hacer.</li><li><b>Cierre:</b> “Esto es una orientación; las decisiones son tuyas.”</li></ol></div>
+</section>
+<div class="footer">Tarot Flow · versión 1.1 · Imágenes: mazo Rider-Waite original de 1909 (dominio público)</div>
+</main></div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="card"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const topics=['Amor','Trabajo','Dinero','Vínculos','Autoconocimiento','Decisión','General'];
+const spreads=[
+['1 Carta — Claridad rápida',['Mensaje central']],
+['3 Cartas — Libre',['Inicio','Desarrollo','Cierre']],
+['Pasado · Presente · Futuro',['Pasado','Presente','Futuro']],
+['Situación · Obstáculo · Consejo',['Situación','Obstáculo','Consejo']],
+['Decisión — Dos caminos',['Situación','Camino A','Resultado A','Camino B','Resultado B']],
+['Relación',['Tu energía','Energía del otro','Vínculo','Consejo']],
+['Amor y evolución',['Estado actual','Necesidad','Bloqueo','Aprendizaje','Dirección']],
+['Nuevo ciclo',['Qué termina','Qué nace','Recurso','Desafío','Dirección']],
+['Trabajo y carrera',['Situación','Fortaleza','Desafío','Oportunidad','Dirección']],
+['Dinero',['Situación','Bloqueo','Recurso','Acción','Resultado']],
+['Propósito / Camino',['Dónde estás','Qué te frena','Potencial','Aprendizaje','Próximo paso']],
+['Sombra y autoconocimiento',['Lo visible','Lo oculto','Patrón','Necesidad','Integración']],
+['Herradura — 7 cartas',['Pasado','Presente','Oculto','Obstáculo','Entorno','Consejo','Resultado']],
+['Cruz Celta — 10 cartas',['Situación','Cruce','Base','Pasado','Posibilidad','Próximo paso','Actitud','Entorno','Esperanzas / temores','Resultado']],
+['Tirada personalizada',['Posición 1','Posición 2','Posición 3']]
+];
+const majors=['El Loco','El Mago','La Sacerdotisa','La Emperatriz','El Emperador','El Hierofante','Los Enamorados','El Carro','La Fuerza','El Ermitaño','La Rueda de la Fortuna','La Justicia','El Colgado','La Muerte','La Templanza','El Diablo','La Torre','La Estrella','La Luna','El Sol','El Juicio','El Mundo'];
+const suitNames=['Bastos','Copas','Espadas','Oros'];
+const ranks=['As','2','3','4','5','6','7','8','9','10','Paje','Caballero','Reina','Rey'];
+const minorsBySuit=Object.fromEntries(suitNames.map(s=>[s,ranks.map(r=>`${r} de ${s}`)]));
+const cards=[...majors,...suitNames.flatMap(s=>minorsBySuit[s])];
+const MAJOR_DATA={"El Loco": {"up": "apertura a una experiencia nueva, impulso de comenzar y margen de incertidumbre", "rev": "impulsividad, dispersión o resistencia a dar un paso que todavía no tiene forma", "tone": 1, "tags": ["inicio", "apertura", "cambio"]}, "El Mago": {"up": "capacidad de actuar con los recursos disponibles, iniciativa y voluntad de concretar", "rev": "recursos dispersos, acción poco consistente o uso poco claro de la propia capacidad", "tone": 2, "tags": ["acción", "recursos", "iniciativa"]}, "La Sacerdotisa": {"up": "observación, información que todavía no se muestra y lectura de lo implícito", "rev": "desconexión de la intuición, información retenida o dificultad para leer lo que ocurre por debajo", "tone": 0, "tags": ["intuición", "oculto", "pausa"]}, "La Emperatriz": {"up": "crecimiento, capacidad de producir, nutrir y hacer que una situación se desarrolle", "rev": "sobreprotección, exceso de entrega, bloqueo creativo o crecimiento que no encuentra cauce", "tone": 2, "tags": ["crecimiento", "creación", "abundancia"]}, "El Emperador": {"up": "estructura, límites, autoridad y necesidad de ordenar la situación con criterios firmes", "rev": "rigidez, control excesivo, conflicto con la autoridad o estructura que perdió flexibilidad", "tone": 1, "tags": ["estructura", "control", "estabilidad"]}, "El Hierofante": {"up": "marco de valores, aprendizaje, tradición, institución o guía dentro de una estructura conocida", "rev": "cuestionamiento de normas, choque con lo establecido o necesidad de revisar una creencia heredada", "tone": 0, "tags": ["valores", "aprendizaje", "estructura"]}, "Los Enamorados": {"up": "elección significativa, coherencia entre deseo y valores, vínculo que exige definición", "rev": "ambivalencia, elección evitada o desalineación entre deseo, decisión y compromiso", "tone": 1, "tags": ["elección", "vínculo", "decisión"]}, "El Carro": {"up": "avance dirigido, voluntad, control del rumbo y capacidad para sostener una decisión", "rev": "pérdida de dirección, impulso desordenado o dificultad para conducir fuerzas opuestas", "tone": 2, "tags": ["avance", "dirección", "acción"]}, "La Fuerza": {"up": "dominio interno, regulación de impulsos, firmeza serena y resistencia emocional", "rev": "desgaste, reacción impulsiva o dificultad para sostener una tensión sin desbordarse", "tone": 1, "tags": ["regulación", "fortaleza", "control"]}, "El Ermitaño": {"up": "retiro deliberado, análisis, búsqueda de criterio propio y necesidad de distancia", "rev": "aislamiento improductivo, exceso de repliegue o dificultad para salir de una búsqueda sin respuesta", "tone": 0, "tags": ["introspección", "distancia", "pausa"]}, "La Rueda de la Fortuna": {"up": "cambio de ciclo, giro de circunstancias y movimiento que altera el escenario", "rev": "ciclo repetido, cambio demorado o sensación de estar sujeto a circunstancias que todavía no se modifican", "tone": 1, "tags": ["ciclo", "cambio", "movimiento"]}, "La Justicia": {"up": "evaluación objetiva, consecuencia, equilibrio de responsabilidades y decisión basada en hechos", "rev": "sesgo, desequilibrio, evasión de responsabilidad o decisión tomada sin considerar todas las variables", "tone": 0, "tags": ["decisión", "equilibrio", "consecuencia"]}, "El Colgado": {"up": "pausa necesaria, suspensión de la acción y cambio de perspectiva antes de continuar", "rev": "estancamiento prolongado, sacrificio improductivo o resistencia a mirar la situación de otra manera", "tone": -1, "tags": ["pausa", "perspectiva", "bloqueo"]}, "La Muerte": {"up": "cierre irreversible de una etapa y transformación que obliga a reorganizar lo que sigue", "rev": "resistencia al cierre, prolongación de algo agotado o dificultad para aceptar una transición", "tone": -1, "tags": ["cierre", "transformación", "cambio"]}, "La Templanza": {"up": "integración gradual, regulación, negociación entre extremos y proceso de ajuste", "rev": "desbalance, mezcla poco funcional o dificultad para encontrar un punto de integración", "tone": 1, "tags": ["equilibrio", "integración", "regulación"]}, "El Diablo": {"up": "apego, deseo, dependencia, negociación con límites y vínculo con algo que condiciona", "rev": "toma de conciencia de una dependencia, intento de cortar un patrón o dificultad para sostener ese desprendimiento", "tone": -2, "tags": ["apego", "dependencia", "control"]}, "La Torre": {"up": "ruptura de una estructura, revelación abrupta o caída de algo que ya no podía sostenerse", "rev": "crisis contenida, resistencia a una ruptura necesaria o deterioro que se intenta postergar", "tone": -2, "tags": ["ruptura", "cambio", "revelación"]}, "La Estrella": {"up": "recuperación de perspectiva, apertura, confianza razonada y horizonte más despejado", "rev": "desánimo, pérdida de referencia o dificultad para reconocer una salida posible", "tone": 2, "tags": ["apertura", "recuperación", "claridad"]}, "La Luna": {"up": "ambigüedad, información incompleta, proyección emocional y percepción difícil de verificar", "rev": "confusión que empieza a aclararse o, en negativo, mayor dificultad para distinguir intuición de temor", "tone": -1, "tags": ["incertidumbre", "oculto", "emoción"]}, "El Sol": {"up": "claridad, exposición de los hechos, vitalidad y resultado visible que puede ser reconocido", "rev": "claridad parcial, exceso de confianza o resultado positivo que todavía no termina de consolidarse", "tone": 2, "tags": ["claridad", "expansión", "resultado"]}, "El Juicio": {"up": "revisión decisiva, llamado a responder por lo vivido y posibilidad de una resolución consciente", "rev": "postergación de una decisión, autojuicio excesivo o resistencia a responder a una evidencia", "tone": 1, "tags": ["revisión", "decisión", "despertar"]}, "El Mundo": {"up": "integración, cierre completo, logro y comprensión del proceso en su conjunto", "rev": "cierre pendiente, resultado incompleto o etapa que necesita una última integración antes de darse por terminada", "tone": 2, "tags": ["cierre", "integración", "logro"]}};
+const MINOR_DATA={"Bastos": {"As": ["inicio de acción, deseo de emprender y energía disponible para poner algo en marcha", "impulso bloqueado, entusiasmo que no encuentra salida o iniciativa mal dirigida", 2, ["inicio", "acción"]], "2": ["planificación, evaluación de alternativas y visión de un próximo movimiento", "indecisión estratégica, plan limitado o temor a ampliar el campo de acción", 1, ["planificación", "decisión"]], "3": ["expansión, proyección y primeros resultados de una iniciativa que ya se puso en marcha", "demora en la expansión, expectativas que necesitan ajuste o falta de coordinación", 1, ["expansión", "progreso"]], "4": ["estabilidad alcanzada, acuerdo, celebración o base suficientemente firme para sostener un proceso", "estabilidad frágil, tensión en el entorno o dificultad para disfrutar de un logro", 2, ["estabilidad", "entorno"]], "5": ["competencia, fricción, intereses cruzados y necesidad de medir fuerzas", "conflicto evitado, tensión interna o competencia que se vuelve improductiva", -1, ["conflicto", "tensión"]], "6": ["reconocimiento, validación pública y avance que recibe respuesta del entorno", "necesidad de aprobación, reconocimiento demorado o éxito más aparente que sólido", 2, ["reconocimiento", "avance"]], "7": ["defensa de una posición, sostén de límites y necesidad de responder a presión externa", "agotamiento defensivo, límites débiles o sensación de no poder sostener la posición", 0, ["defensa", "límites"]], "8": ["movimiento rápido, noticias, coordinación y aceleración de acontecimientos", "demoras, mensajes cruzados o acción precipitada que pierde coordinación", 2, ["movimiento", "comunicación"]], "9": ["resistencia, cautela y capacidad de sostenerse después de experiencias exigentes", "cansancio acumulado, hipervigilancia o dificultad para mantener una defensa", 0, ["resistencia", "límites"]], "10": ["carga, exceso de responsabilidades y esfuerzo que empieza a resultar difícil de sostener", "delegación necesaria, colapso por sobrecarga o intento de soltar responsabilidades", -1, ["carga", "esfuerzo"]], "Paje": ["curiosidad, noticia o comienzo de una experiencia vinculada con acción y deseo", "entusiasmo inmaduro, mensaje poco consistente o dificultad para sostener lo iniciado", 1, ["inicio", "mensaje"]], "Caballero": ["avance intenso, iniciativa rápida y tendencia a actuar antes de medir todas las consecuencias", "impulsividad, inconstancia o acción que se dispersa por exceso de velocidad", 1, ["acción", "impulso"]], "Reina": ["autonomía, magnetismo, seguridad para actuar y capacidad de sostener un proyecto propio", "inseguridad encubierta, necesidad de controlar el entorno o desgaste por sostener demasiado", 2, ["autonomía", "acción"]], "Rey": ["liderazgo, visión estratégica y dominio maduro de la iniciativa", "autoritarismo, imposición o ambición que desplaza la escucha del contexto", 2, ["liderazgo", "dirección"]]}, "Copas": {"As": ["apertura emocional, disponibilidad afectiva y comienzo de una experiencia sensible", "emoción contenida, cierre afectivo o dificultad para expresar lo que se siente", 2, ["inicio", "emoción"]], "2": ["reciprocidad, acuerdo emocional, atracción o vínculo basado en intercambio mutuo", "desacuerdo, desequilibrio vincular o dificultad para sostener reciprocidad", 2, ["vínculo", "acuerdo"]], "3": ["celebración, red afectiva, encuentro y apoyo compartido", "exceso social, interferencias de terceros o vínculos que pierden profundidad", 2, ["vínculo", "entorno"]], "4": ["apatía, repliegue emocional, insatisfacción o dificultad para registrar una opción disponible", "reactivación emocional o salida de una etapa de desconexión; también inquietud por no encontrar satisfacción", -1, ["apatía", "pausa"]], "5": ["pérdida, decepción, duelo y foco puesto en lo que no salió como se esperaba", "aceptación gradual de una pérdida, recuperación o dificultad para cerrar el duelo", -2, ["pérdida", "emoción"]], "6": ["memoria afectiva, pasado, familiaridad y retorno de referencias conocidas", "idealización del pasado, inmadurez emocional o necesidad de dejar de comparar con lo que fue", 1, ["pasado", "memoria"]], "7": ["múltiples opciones, fantasía, proyección y dificultad para distinguir deseo de posibilidad real", "reducción de opciones, mayor claridad o caída de una fantasía que antes dominaba la percepción", 0, ["opciones", "confusión"]], "8": ["retiro de una situación emocional que ya no satisface y búsqueda de un sentido distinto", "dificultad para irse, retorno a algo ya agotado o evitación del cambio afectivo", -1, ["retiro", "cambio"]], "9": ["satisfacción, deseo cumplido y disfrute personal de una situación", "insatisfacción pese a tener recursos, exceso o expectativa emocional inflada", 2, ["satisfacción", "resultado"]], "10": ["armonía afectiva, pertenencia y sensación de estabilidad dentro de un sistema vincular", "tensión familiar, ideal de felicidad que no coincide con la realidad o dificultad de integración", 2, ["vínculo", "estabilidad"]], "Paje": ["sensibilidad, mensaje emocional, curiosidad afectiva y disposición a explorar lo que se siente", "inmadurez emocional, susceptibilidad o mensaje afectivo poco claro", 1, ["mensaje", "emoción"]], "Caballero": ["propuesta, acercamiento, idealismo y movimiento guiado por deseo o afecto", "idealización, promesa difícil de sostener o seducción sin suficiente base", 1, ["propuesta", "vínculo"]], "Reina": ["receptividad, empatía, percepción emocional y capacidad para sostener una lectura sensible", "absorción emocional, límites difusos o dificultad para separar percepción propia y ajena", 2, ["empatía", "intuición"]], "Rey": ["madurez emocional, regulación afectiva y capacidad de responder sin perder estabilidad", "control emocional excesivo, manipulación afectiva o dificultad para expresar vulnerabilidad", 2, ["madurez", "regulación"]]}, "Espadas": {"As": ["claridad mental, verdad, decisión y corte con la confusión", "confusión, información incompleta o uso rígido de una idea como si fuera la única verdad", 2, ["claridad", "decisión"]], "2": ["indecisión, equilibrio precario y bloqueo por no querer elegir entre alternativas", "decisión forzada, saturación mental o información que rompe una falsa neutralidad", -1, ["indecisión", "bloqueo"]], "3": ["dolor, separación, verdad incómoda o herida que no puede seguir siendo negada", "proceso de recuperación, dolor retenido o dificultad para terminar de elaborar una herida", -2, ["dolor", "ruptura"]], "4": ["pausa mental, retiro, descanso y necesidad de detener la actividad para recuperar criterio", "inquietud, agotamiento o imposibilidad de descansar pese a necesitarlo", 0, ["pausa", "recuperación"]], "5": ["conflicto, victoria a un costo alto, tensión verbal o dinámica donde alguien necesita imponerse", "desescalada del conflicto, resentimiento pendiente o intento de reparar después de una confrontación", -2, ["conflicto", "tensión"]], "6": ["transición, alejamiento de una dificultad y traslado hacia un escenario más manejable", "resistencia a la transición, asuntos que siguen arrastrándose o dificultad para dejar atrás un problema", 1, ["transición", "movimiento"]], "7": ["estrategia, reserva de información, maniobra individual u ocultamiento", "verdad que sale a la luz, estrategia mal ejecutada o necesidad de revisar una conducta evasiva", -1, ["estrategia", "oculto"]], "8": ["restricción mental, sensación de no tener opciones y marco de pensamiento que limita la acción", "reconocimiento de alternativas, salida gradual del bloqueo o miedo a usar la libertad disponible", -2, ["bloqueo", "mente"]], "9": ["ansiedad, preocupación, anticipación negativa y actividad mental difícil de detener", "reducción de la ansiedad o, en negativo, preocupación interiorizada que no se expresa", -2, ["ansiedad", "mente"]], "10": ["final doloroso, agotamiento de una situación y punto donde ya no puede sostenerse igual", "recuperación tras una crisis, resistencia a aceptar el final o prolongación del desgaste", -2, ["final", "ruptura"]], "Paje": ["curiosidad intelectual, observación, vigilancia y búsqueda de información", "rumor, pensamiento disperso o tendencia a interpretar antes de contar con datos suficientes", 1, ["información", "mente"]], "Caballero": ["acción mental rápida, confrontación, argumentación y avance directo hacia un objetivo", "agresividad verbal, precipitación o conflicto provocado por actuar sin medir consecuencias", 0, ["acción", "conflicto"]], "Reina": ["criterio, límites claros, independencia mental y capacidad de separar hechos de deseos", "frialdad defensiva, juicio severo o uso del intelecto para cortar antes de comprender", 1, ["criterio", "límites"]], "Rey": ["autoridad intelectual, estrategia, análisis y decisión basada en principios", "rigidez mental, manipulación del discurso o ejercicio autoritario del criterio", 1, ["autoridad", "decisión"]]}, "Oros": {"As": ["oportunidad material, recurso concreto y posibilidad de construir algo estable", "oportunidad desaprovechada, inversión incierta o base material todavía insuficiente", 2, ["oportunidad", "materia"]], "2": ["administración de recursos, adaptación y equilibrio entre demandas simultáneas", "desorganización, exceso de frentes abiertos o dificultad para sostener prioridades", 0, ["equilibrio", "recursos"]], "3": ["trabajo colaborativo, aprendizaje aplicado y reconocimiento de una habilidad en desarrollo", "descoordinación, trabajo de baja calidad o dificultad para integrarse a un equipo", 2, ["trabajo", "colaboración"]], "4": ["conservación, control de recursos, seguridad y necesidad de proteger lo adquirido", "apego material, miedo a perder o, en otro nivel, apertura para soltar un control excesivo", 0, ["control", "seguridad"]], "5": ["escasez, inseguridad material, exclusión o sensación de no contar con apoyo suficiente", "recuperación económica o práctica, ayuda disponible o salida gradual de una etapa de carencia", -2, ["escasez", "inseguridad"]], "6": ["intercambio, ayuda, reciprocidad material y distribución de recursos", "dependencia, deuda, intercambio desigual o ayuda condicionada", 1, ["intercambio", "recursos"]], "7": ["evaluación de resultados, paciencia y revisión de si el esfuerzo está dando el rendimiento esperado", "impaciencia, esfuerzo mal invertido o necesidad de cambiar estrategia por falta de retorno", 0, ["evaluación", "resultado"]], "8": ["trabajo sostenido, oficio, disciplina y mejora a través de la práctica", "rutina sin aprendizaje, perfeccionismo o trabajo repetido que pierde calidad", 2, ["trabajo", "práctica"]], "9": ["autonomía material, autosuficiencia y resultado construido con constancia", "dependencia económica, apariencia de autosuficiencia o disfrute limitado por inseguridad", 2, ["autonomía", "resultado"]], "10": ["estabilidad duradera, patrimonio, familia, legado y estructura material consolidada", "inestabilidad en la base familiar o económica, disputa por recursos o estructura que no garantiza seguridad", 2, ["estabilidad", "legado"]], "Paje": ["aprendizaje práctico, oportunidad concreta y disposición a desarrollar una habilidad", "falta de constancia, oportunidad que no se trabaja o exceso de teoría sin aplicación", 1, ["aprendizaje", "oportunidad"]], "Caballero": ["constancia, responsabilidad y progreso lento pero fiable", "estancamiento, rutina rígida o lentitud que ya no responde a una estrategia útil", 1, ["constancia", "trabajo"]], "Reina": ["administración competente, cuidado práctico y capacidad de generar estabilidad", "sobrecarga de responsabilidades, descuido propio o control excesivo del entorno material", 2, ["estabilidad", "gestión"]], "Rey": ["dominio de recursos, estabilidad, criterio económico y capacidad de sostener resultados", "materialismo, control financiero o autoridad basada exclusivamente en recursos", 2, ["liderazgo", "recursos"]]}};
+const SUIT_META={"Bastos": {"element": "Fuego", "area": "acción, proyectos, deseo e iniciativa", "lens": {"Amor": "deseo, iniciativa, química y forma de actuar dentro del vínculo", "Vínculos": "dinámica, iniciativa y tensión entre las personas", "Trabajo": "proyectos, ritmo de trabajo, competencia e iniciativa", "Dinero": "decisiones activas, impulso emprendedor y riesgo", "Autoconocimiento": "deseo, voluntad y forma de poner energía en lo que se quiere", "Decisión": "capacidad de actuar y sostener una dirección", "General": "acción, impulso y movimiento"}}, "Copas": {"element": "Agua", "area": "emociones, vínculos y sensibilidad", "lens": {"Amor": "reciprocidad, disponibilidad afectiva y estado emocional del vínculo", "Vínculos": "intercambio afectivo, cercanía, expectativas y pertenencia", "Trabajo": "clima emocional, motivación y relación con el entorno laboral", "Dinero": "reacción emocional frente a seguridad, pérdida o deseo", "Autoconocimiento": "necesidad emocional, memoria afectiva y forma de procesar lo que se siente", "Decisión": "peso emocional de cada alternativa", "General": "emociones, vínculos y respuesta sensible"}}, "Espadas": {"element": "Aire", "area": "mente, comunicación, conflicto y decisión", "lens": {"Amor": "comunicación, límites, conflicto, interpretación de señales y decisiones del vínculo", "Vínculos": "palabras, tensiones, distancia y acuerdos mentales", "Trabajo": "decisiones, presión, comunicación y conflicto profesional", "Dinero": "criterio, preocupación, negociación y decisiones financieras", "Autoconocimiento": "creencias, diálogo interno, miedo y claridad mental", "Decisión": "análisis, conflicto entre alternativas y necesidad de definir", "General": "pensamiento, comunicación y tensión"}}, "Oros": {"element": "Tierra", "area": "recursos, trabajo, cuerpo y realidad material", "lens": {"Amor": "estabilidad, hechos concretos, disponibilidad práctica y capacidad de sostener un vínculo", "Vínculos": "confianza construida con hechos, apoyo y límites materiales", "Trabajo": "recursos, desempeño, estabilidad, resultados y organización", "Dinero": "recursos, seguridad, intercambio y resultados económicos", "Autoconocimiento": "seguridad, hábitos, cuerpo y relación con lo concreto", "Decisión": "viabilidad, costo, recursos y sostenibilidad", "General": "realidad material, recursos y estabilidad"}}};
+const OPPOSITES=[['claridad','incertidumbre'],['acción','pausa'],['avance','bloqueo'],['apertura','control'],['estabilidad','cambio'],['vínculo','distancia'],['abundancia','escasez'],['integración','ruptura'],['acuerdo','conflicto'],['autonomía','dependencia']];
+const rankOrder={'As':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10};
+let state={topic:'General',question:'',spread:0,selections:[],lastReading:null};
+
+function normalize(v){return (v||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim()}
+function escapeHTML(v){return String(v||'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[m]))}
+function cardParts(name){
+  if(MAJOR_DATA[name]) return {type:'major',name,...MAJOR_DATA[name]};
+  const suit=suitNames.find(s=>name.endsWith(` de ${s}`));
+  if(!suit) return {type:'unknown',name,up:'',rev:'',tone:0,tags:[]};
+  const rank=name.replace(` de ${suit}`,''); const raw=MINOR_DATA[suit][rank];
+  return {type:'minor',name,suit,rank,up:raw[0],rev:raw[1],tone:raw[2],tags:raw[3],element:SUIT_META[suit].element};
+}
+function orientationMeaning(sel){const d=cardParts(sel.card);return sel.rev?d.rev:d.up}
+function cardGroup(c){return MAJOR_DATA[c]?'Arcanos Mayores':(suitNames.find(s=>c.endsWith(` de ${s}`))||'Otros')}
+function cardKeyword(c){const d=cardParts(c);return d.up.split(',').slice(0,2).join(',')}
+
+function go(id){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.go===id));if(id==='historial')renderHistory();if(id==='inicio')renderHome();if(id==='plan')renderPlan();if(id==='entrenar')showTrainMenu();if(id==='progreso')renderProgress();if(id==='terapeutico')renderTera();window.scrollTo({top:0});}
+function resetNewReading(){
+  state.topic='General';state.question='';state.spread=3;state.selections=[];state.lastReading=null;
+  const q=document.getElementById('question');if(q)q.value='';
+  document.querySelectorAll('#topics .chip').forEach((c,i)=>c.classList.toggle('on',i===6));
+  document.querySelectorAll('#spreads .spread').forEach((d,i)=>d.classList.toggle('on',i===3));
+  document.getElementById('w1').style.display='block';
+  document.getElementById('w2').style.display='none';
+  document.getElementById('w3').style.display='none';
+  document.getElementById('w4').style.display='none';
+  document.getElementById('slots').innerHTML='';
+  document.getElementById('result').innerHTML='';
+  step(1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function navigate(id){if(id==='tirada'){go('tirada');resetNewReading();return;}go(id);}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>navigate(b.dataset.go));
+const t=document.getElementById('topics');topics.forEach((x,i)=>{let b=document.createElement('button');b.className='chip'+(i===6?' on':'');b.textContent=x;b.onclick=()=>{document.querySelectorAll('#topics .chip').forEach(c=>c.classList.remove('on'));b.classList.add('on');state.topic=x};t.appendChild(b)});
+function next1(){state.question=document.getElementById('question').value.trim();document.getElementById('w1').style.display='none';document.getElementById('w2').style.display='block';step(2)}
+const sp=document.getElementById('spreads');spreads.forEach((x,i)=>{let d=document.createElement('div');d.className='spread'+(i===3?' on':'');d.innerHTML=`<b>${x[0]}</b><br><small>${x[1].length} posiciones</small>`;d.onclick=()=>{document.querySelectorAll('.spread').forEach(e=>e.classList.remove('on'));d.classList.add('on');state.spread=i};sp.appendChild(d)});state.spread=3;
+function next2(){document.getElementById('w2').style.display='none';document.getElementById('w3').style.display='block';step(3);renderSlots()}
+function renderSlots(){
+  const c=document.getElementById('slots');c.innerHTML='';state.selections=[];
+  spreads[state.spread][1].forEach((pos,i)=>{
+    state.selections.push({card:'',rev:false});
+    const row=document.createElement('div');row.className='slot';
+    row.innerHTML=`<strong>${i+1}. ${pos}</strong>
+      <div class="combo" data-index="${i}">
+        <input class="input combo-input" autocomplete="off" placeholder="Escribe o selecciona una carta..." aria-label="Carta para ${pos}">
+        <button type="button" class="combo-btn" aria-label="Abrir lista">⌄</button>
+        <div class="combo-menu"></div>
+      </div>
+      <select class="input orientation"><option>Derecha</option><option>Invertida</option></select>`;
+    const combo=row.querySelector('.combo'), input=combo.querySelector('input'), menu=combo.querySelector('.combo-menu'), btn=combo.querySelector('.combo-btn'), orient=row.querySelector('.orientation');
+    function drawMenu(query=''){
+      const q=normalize(query);let html='';let total=0;
+      const groups=[['ARCANOS MAYORES',majors],...suitNames.map(s=>[s.toUpperCase(),minorsBySuit[s]])];
+      groups.forEach(([label,list])=>{const filtered=list.filter(x=>normalize(x).includes(q));if(filtered.length){html+=`<div class="combo-head">${label}</div>`+filtered.map(x=>`<div class="combo-option" data-card="${x}">${x}</div>`).join('');total+=filtered.length;}});
+      menu.innerHTML=total?html:'<div class="combo-empty">No encontré esa carta.</div>';
+      menu.querySelectorAll('.combo-option').forEach(o=>o.onclick=()=>{input.value=o.dataset.card;state.selections[i].card=o.dataset.card;combo.classList.remove('open')});
+    }
+    input.onfocus=()=>{drawMenu(input.value);combo.classList.add('open')};
+    input.oninput=()=>{state.selections[i].card='';drawMenu(input.value);combo.classList.add('open')};
+    input.onblur=()=>setTimeout(()=>{const exact=cards.find(x=>normalize(x)===normalize(input.value));if(exact){input.value=exact;state.selections[i].card=exact}combo.classList.remove('open')},150);
+    btn.onclick=()=>{drawMenu(input.value);combo.classList.toggle('open');if(combo.classList.contains('open'))input.focus()};
+    orient.onchange=e=>state.selections[i].rev=e.target.selectedIndex===1;
+    drawMenu();c.appendChild(row);
+  });
+}
+function step(n){[1,2,3,4].forEach(i=>document.getElementById('s'+i).classList.toggle('on',i<=n))}
+
+function positionRole(pos){
+ const p=normalize(pos);
+ if(/obstac|bloque|desafio|cruce|frena/.test(p))return'obstacle';
+ if(/consejo|direccion|proximo|accion/.test(p))return'advice';
+ if(/resultado|futuro|cierre/.test(p))return'result';
+ if(/pasado|base|termina/.test(p))return'background';
+ if(/presente|situacion|estado actual|donde estas|inicio/.test(p))return'current';
+ if(/recurso|fortaleza|potencial|oportunidad|posibilidad/.test(p))return'resource';
+ if(/oculto|sombra|patron/.test(p))return'underlying';
+ if(/tu energia|actitud/.test(p))return'self';
+ if(/otro|entorno/.test(p))return'other';
+ if(/vinculo/.test(p))return'bond';
+ if(/necesidad|aprendizaje|integracion/.test(p))return'lesson';
+ if(/camino a|camino b/.test(p))return'path';
+ return'neutral';
+}
+function topicLens(d,topic){
+ if(d.type==='minor')return SUIT_META[d.suit].lens[topic]||SUIT_META[d.suit].lens.General;
+ const map={
+ 'Amor':'la dinámica afectiva, el grado de definición y la forma en que se está construyendo el vínculo',
+ 'Vínculos':'la relación entre posiciones, límites, expectativas y reciprocidad',
+ 'Trabajo':'el proceso profesional, las decisiones, la estructura y la capacidad de avanzar con hechos',
+ 'Dinero':'la administración de recursos, la estabilidad y las consecuencias concretas de cada decisión',
+ 'Autoconocimiento':'el proceso interno que está organizando la conducta, los límites y la percepción de la situación',
+ 'Decisión':'el criterio de elección, los costos de cada alternativa y el rumbo que se consolida',
+ 'General':'el proceso central que organiza la consulta'
+ }; return map[topic]||map.General;
+}
+const LOVE_MAJOR={
+ 'El Loco':'apertura e imprevisibilidad: el vínculo puede existir como posibilidad, pero todavía sin una forma estable ni un acuerdo claro',
+ 'El Mago':'iniciativa, contacto y capacidad de convertir una posibilidad en un hecho; pide acción concreta y comunicación directa',
+ 'La Sacerdotisa':'reserva, silencios y contenido emocional que no está siendo expresado de forma abierta; conviene leer más lo implícito que lo declarado',
+ 'La Emperatriz':'crecimiento afectivo, disponibilidad para nutrir el vínculo y deseo de que algo tome cuerpo; también puede mostrar una parte que entrega más',
+ 'El Emperador':'necesidad de definición, límites y estructura; el vínculo busca una forma más clara o choca con rigidez y control',
+ 'El Hierofante':'valores compartidos, compromiso, formalización o necesidad de encuadrar el vínculo dentro de reglas y expectativas conocidas',
+ 'Los Enamorados':'atracción y elección: hay un vínculo significativo, pero la carta exige definición y coherencia entre deseo y decisión',
+ 'El Carro':'avance, desplazamiento y decisión de mover la situación; en vínculos a distancia puede reforzar la idea de traslado o encuentro si las demás posiciones lo acompañan',
+ 'La Fuerza':'intensidad emocional o atracción sostenida con autocontrol; hay energía, pero se administra, se contiene o se lleva con paciencia',
+ 'El Ermitaño':'distancia, repliegue y necesidad de pensar en soledad; baja la velocidad del vínculo y prioriza la reflexión sobre la acción inmediata',
+ 'La Rueda de la Fortuna':'cambio de etapa y giro de circunstancias; la relación entra en un punto donde la dinámica puede modificarse sin depender de un solo factor',
+ 'La Justicia':'definición basada en hechos, reciprocidad y consecuencias; obliga a mirar qué está realmente acordado y qué aporta cada parte',
+ 'El Colgado':'espera, suspensión y falta de avance visible; algo necesita otra mirada antes de poder moverse',
+ 'La Muerte':'transformación profunda: la relación no puede continuar exactamente bajo la misma forma; algo debe cerrarse, cambiar o redefinirse',
+ 'La Templanza':'acercamiento gradual, diálogo y ajuste de ritmos; favorece procesos que se construyen con tiempo más que movimientos bruscos',
+ 'El Diablo':'deseo intenso, química, apego o dependencia; hay magnetismo, pero también riesgo de quedar atrapados en una dinámica que no termina de definirse',
+ 'La Torre':'ruptura de una expectativa o estructura del vínculo; algo se revela o deja de poder sostenerse como antes',
+ 'La Estrella':'apertura emocional, esperanza y posibilidad de recuperar confianza; necesita hechos que acompañen esa expectativa',
+ 'La Luna':'ambigüedad, proyección y señales difíciles de comprobar; puede haber emoción real, pero no suficiente claridad para concluir intenciones',
+ 'El Sol':'claridad, presencia y expresión abierta; favorece encuentros, conversaciones francas y hechos que dejan menos lugar a la duda',
+ 'El Juicio':'revisión del vínculo, conversación decisiva o reaparición de un asunto que necesita respuesta y definición',
+ 'El Mundo':'distancia, cierre de ciclo o necesidad de completar una etapa; en relaciones a distancia puede representar literalmente el factor geográfico o un vínculo que debe pasar de lo virtual/lejano a una definición concreta'
+};
+
+function questionProfile(q){
+ const n=normalize(q);
+ return {
+  timing:/cuando|cuanto tiempo|pronto|rapido|esta semana|este mes|vere|veremos|encuentro|encontrarnos/.test(n),
+  distance:/distancia|lejos|otro pais|otra ciudad|virtual|online/.test(n),
+  feelings:/siente|sentimientos|me quiere|me ama|piensa en mi|que siente/.test(n),
+  reunion:/volver|regresar|reconcili|reencontr|retomar/.test(n),
+  commitment:/compromiso|formalizar|pareja|relacion seria|definir/.test(n),
+  communication:/hablar|mensaje|escribir|contact|comunic/.test(n),
+  decision:/debo|conviene|elegir|decision|que hago/.test(n)
+ };
+}
+function questionFocus(){
+ const p=questionProfile(state.question);
+ if(state.topic==='Amor'||state.topic==='Vínculos'){
+  if(p.timing&&p.distance)return 'la posibilidad de pasar de un vínculo sostenido a distancia a un movimiento o encuentro concreto';
+  if(p.timing)return 'si la dinámica muestra movimiento concreto en el corto plazo';
+  if(p.feelings)return 'qué muestran las cartas sobre la disponibilidad afectiva y la forma en que se expresa el vínculo';
+  if(p.reunion)return 'si existen condiciones para retomar el vínculo y bajo qué dinámica';
+  if(p.commitment)return 'el grado de definición, reciprocidad y posibilidad de estructurar el vínculo';
+  if(p.communication)return 'la apertura al contacto y la calidad de la comunicación entre las partes';
+  return 'la dinámica real del vínculo, su nivel de definición y lo que está condicionando su evolución';
+ }
+ if(state.topic==='Trabajo')return 'la dinámica profesional, los obstáculos concretos y el margen real de avance';
+ if(state.topic==='Dinero')return 'la estabilidad, los recursos disponibles y las decisiones que afectan el resultado material';
+ if(state.topic==='Decisión')return 'qué alternativa tiene mayor coherencia con los factores que muestra la tirada';
+ if(state.topic==='Autoconocimiento')return 'el patrón interno que está organizando la experiencia y qué necesita integrarse';
+ return 'el núcleo de la consulta y cómo evoluciona según la estructura elegida';
+}
+function contextualCore(sel){
+ const d=cardParts(sel.card);
+ if(sel.rev)return d.rev;
+ if((state.topic==='Amor'||state.topic==='Vínculos')&&d.type==='major'&&LOVE_MAJOR[d.name])return LOVE_MAJOR[d.name];
+ return d.up;
+}
+function conciseCore(sel){
+ const m=contextualCore(sel);
+ return m.split(';')[0].split('. ')[0];
+}
+function roleIntro(role,pos){
+ const m={
+  obstacle:`Como ${pos.toLowerCase()},`, advice:`En ${pos.toLowerCase()},`, result:`Como ${pos.toLowerCase()},`, background:`En ${pos.toLowerCase()},`, current:`En ${pos.toLowerCase()},`, resource:`Como ${pos.toLowerCase()},`, underlying:`En ${pos.toLowerCase()},`, self:`En ${pos.toLowerCase()},`, other:`En ${pos.toLowerCase()},`, bond:`En ${pos.toLowerCase()},`, lesson:`En ${pos.toLowerCase()},`, path:`En ${pos},`, neutral:`En ${pos.toLowerCase()},`
+ }; return m[role]||m.neutral;
+}
+function positionInterpretation(sel,pos,i){
+ const d=cardParts(sel.card), role=positionRole(pos), core=contextualCore(sel), p=questionProfile(state.question);
+ let first='';
+ if(role==='current') first=`${roleIntro(role,pos)} <b>${sel.card}</b> describe el estado que domina ahora mismo: ${core}.`;
+ else if(role==='obstacle') first=`${roleIntro(role,pos)} <b>${sel.card}</b> no define todo el vínculo: muestra el punto que frena, complica o condiciona el desarrollo: ${core}.`;
+ else if(role==='advice') first=`${roleIntro(role,pos)} <b>${sel.card}</b> funciona como criterio de acción: ${core}.`;
+ else if(role==='result') first=`${roleIntro(role,pos)} <b>${sel.card}</b> muestra la tendencia que toma el proceso si la dinámica actual continúa: ${core}.`;
+ else if(role==='lesson') first=`${roleIntro(role,pos)} <b>${sel.card}</b> señala qué necesita comprenderse, modificarse o integrarse: ${core}.`;
+ else if(role==='resource') first=`${roleIntro(role,pos)} <b>${sel.card}</b> representa un recurso realmente disponible dentro de la situación: ${core}.`;
+ else if(role==='background') first=`${roleIntro(role,pos)} <b>${sel.card}</b> explica el antecedente que todavía influye: ${core}.`;
+ else if(role==='underlying') first=`${roleIntro(role,pos)} <b>${sel.card}</b> muestra una dinámica que opera por debajo de lo evidente: ${core}.`;
+ else if(role==='self') first=`${roleIntro(role,pos)} <b>${sel.card}</b> describe cómo la consultante entra y responde dentro de la situación: ${core}.`;
+ else if(role==='other') first=`${roleIntro(role,pos)} <b>${sel.card}</b> representa el factor externo o la forma en que la otra parte aparece en la dinámica, sin convertirlo en una afirmación sobre pensamientos privados: ${core}.`;
+ else if(role==='bond') first=`${roleIntro(role,pos)} <b>${sel.card}</b> caracteriza lo que se produce entre ambas partes: ${core}.`;
+ else if(role==='path') first=`${roleIntro(role,pos)} <b>${sel.card}</b> describe la lógica de esa alternativa: ${core}.`;
+ else first=`${roleIntro(role,pos)} <b>${sel.card}</b> aporta ${core}.`;
+
+ let second='';
+ if((state.topic==='Amor'||state.topic==='Vínculos')&&p.distance&&sel.card==='El Mundo'){
+  second=role==='obstacle'?'Aquí la carta es especialmente literal: la distancia, el cierre pendiente o la dificultad para llevar el vínculo a una forma más concreta puede ser precisamente el bloqueo.':'En una consulta donde la distancia es central, El Mundo puede hablar tanto del factor geográfico como de la necesidad de completar o definir la etapa actual.';
+ } else if((state.topic==='Amor'||state.topic==='Vínculos')&&p.timing&&sel.card==='El Mago'){
+  second=role==='lesson'?'No alcanza con que exista potencial: la necesidad es transformar intención en contacto, propuesta o acción verificable.':'El Mago suma capacidad de iniciativa, pero su peso temporal depende de que aparezca en posiciones de acción o resultado, no solo como posibilidad.';
+ } else if((state.topic==='Amor'||state.topic==='Vínculos')&&sel.card==='La Muerte'){
+  second='No es una carta que describa continuidad sin cambios: obliga a dejar atrás una forma anterior del vínculo para que pueda existir otra.';
+ } else if((state.topic==='Amor'||state.topic==='Vínculos')&&sel.card==='El Diablo'){
+  second='El deseo puede ser fuerte, pero deseo y concreción no son equivalentes; esta carta pide distinguir atracción de disponibilidad real.';
+ } else if((state.topic==='Amor'||state.topic==='Vínculos')&&sel.card==='La Fuerza'){
+  second='La energía existe, aunque aparece contenida: hay más sostén y regulación que movimiento espontáneo.';
+ } else if(sel.rev){
+  second='La inversión hace que el tema no se exprese de manera directa: puede aparecer como bloqueo, exceso, demora o vivencia interna.';
+ } else if(d.type==='minor'){
+  second=`Por pertenecer a ${d.suit}, esta posición aterriza la lectura en ${SUIT_META[d.suit].area}; conviene observar hechos de ese plano antes de ampliar la interpretación.`;
+ }
+ return first+(second?` ${second}`:'');
+}
+
+function commonTags(a,b){return a.tags.filter(x=>b.tags.includes(x))}
+function oppositeTags(a,b){for(const [x,y] of OPPOSITES){if((a.tags.includes(x)&&b.tags.includes(y))||(a.tags.includes(y)&&b.tags.includes(x)))return [x,y]}return null}
+function relationBetween(sa,sb,posa,posb){
+ const a=cardParts(sa.card),b=cardParts(sb.card),shared=commonTags(a,b),opp=oppositeTags(a,b);let type='Secuencia',sentence='';
+ const ca=conciseCore(sa),cb=conciseCore(sb);
+ if(opp){type='Contraste';sentence=`Entre <b>${posa}</b> y <b>${posb}</b> aparece una tensión clara: ${sa.card} empuja hacia ${ca}, mientras ${sb.card} introduce ${cb}. La lectura está en cómo conviven esas dos fuerzas, no en elegir una sola.`}
+ else if(shared.length){type='Refuerzo';sentence=`${sa.card} y ${sb.card} comparten un eje de ${shared.slice(0,2).join(' / ')}. Al aparecer en “${posa}” y “${posb}”, ese tema deja de ser secundario y pasa a estructurar la lectura.`}
+ else if(a.type==='major'&&b.type==='major'){type='Proceso mayor';sentence=`La secuencia <b>${sa.card} → ${sb.card}</b> mueve la lectura desde ${ca} hacia ${cb}. Al ser dos Arcanos Mayores, no describe un detalle aislado sino un cambio de etapa dentro del proceso.`}
+ else if(a.type==='minor'&&b.type==='minor'&&a.suit===b.suit){type='Continuidad';sentence=`Las dos cartas sostienen el plano de ${a.suit}. ${sa.card} plantea ${ca}; ${sb.card} continúa ese mismo tema desde ${posb.toLowerCase()}, mostrando desarrollo dentro de una misma área.`}
+ else if(a.type==='major'&&b.type==='minor'){type='Fondo → hecho';sentence=`${sa.card} fija el proceso de fondo (${ca}) y ${sb.card} muestra dónde ese proceso se vuelve concreto (${cb}).`}
+ else if(a.type==='minor'&&b.type==='major'){type='Hecho → proceso';sentence=`${sa.card} parte de una circunstancia concreta (${ca}) y ${sb.card} eleva la lectura hacia un proceso de mayor peso (${cb}).`}
+ else {sentence=`La transición de <b>${sa.card}</b> a <b>${sb.card}</b> lleva la lectura de ${ca} hacia ${cb}. La posición “${posb}” modifica el sentido de lo que venía mostrando “${posa}”.`}
+ return {type,sentence};
+}
+function detectPatterns(){
+ const data=state.selections.map(s=>({...cardParts(s.card),rev:s.rev}));const out=[];const majorsN=data.filter(d=>d.type==='major').length,revN=data.filter(d=>d.rev).length;
+ if(majorsN)out.push(`<b>${majorsN} Arcano${majorsN>1?'s':''} Mayor${majorsN>1?'es':''}</b>: ${majorsN===data.length?'toda la tirada está formada por Arcanos Mayores. Esto aumenta el peso del proceso: la consulta no aparece como un episodio menor, sino como una etapa de definición, cambio o aprendizaje.':majorsN>=Math.ceil(data.length/2)?'los procesos de fondo dominan la lectura y pesan más que los detalles circunstanciales.':'hay un proceso de fondo que condiciona hechos más concretos.'}`);
+ const suits={};data.filter(d=>d.suit).forEach(d=>suits[d.suit]=(suits[d.suit]||0)+1);const sorted=Object.entries(suits).sort((a,b)=>b[1]-a[1]);if(sorted.length&&sorted[0][1]>=2){const [s,n]=sorted[0];out.push(`<b>Predominio de ${s} (${n})</b>: ${SUIT_META[s].area}. Ese plano se repite y merece más peso dentro de la interpretación.`)}
+ if(revN)out.push(`<b>${revN} carta${revN>1?'s':''} invertida${revN>1?'s':''}</b>: ${revN>=Math.ceil(data.length/2)?'gran parte de la tirada trabaja bloqueos, excesos o procesos internalizados; el desarrollo es menos lineal.':'esas posiciones introducen demora, bloqueo o expresión parcial.'}`);
+ const courts=data.filter(d=>d.rank&&['Paje','Caballero','Reina','Rey'].includes(d.rank));if(courts.length>=2)out.push(`<b>${courts.length} figuras de corte</b>: aumenta el peso de actitudes, roles o personas concretas dentro de la situación.`);
+ if(!out.length)out.push('No hay una dominancia estructural fuerte; la lectura depende sobre todo de la función de cada posición y de la secuencia entre cartas.');return out;
+}
+function timingAssessment(){
+ const p=questionProfile(state.question);if(!p.timing)return null;
+ const positions=spreads[state.spread][1];let score=0,signals=[];
+ state.selections.forEach((s,i)=>{const role=positionRole(positions[i]),d=cardParts(s.card);let w=['result','advice'].includes(role)?2:role==='current'?1:role==='obstacle'?-1:0.5;
+  if(['El Carro','El Sol','8 de Bastos','Caballero de Bastos','El Mago'].includes(s.card)){score+=1.3*w;signals.push(`${s.card} aporta movimiento o iniciativa desde ${positions[i].toLowerCase()}`)}
+  if(['El Colgado','El Ermitaño','4 de Espadas','7 de Oros'].includes(s.card)){score-=1.4*Math.abs(w||1);signals.push(`${s.card} introduce pausa o demora desde ${positions[i].toLowerCase()}`)}
+  if(s.card==='El Mundo'&&p.distance&&role==='obstacle'){score-=3;signals.push('El Mundo en bloqueo refuerza de forma muy directa el factor distancia/cierre pendiente')}
+  if(s.card==='La Muerte'){score-=.5;signals.push('La Muerte exige transformación antes de hablar de continuidad')}
+  if(s.card==='El Diablo'&&['result','advice'].includes(role)){score-=1;signals.push('El Diablo mantiene deseo o apego, pero no confirma por sí solo una concreción')}
+ });
+ let verdict=score>=2.5?'La tirada sí contiene señales de movimiento, aunque no permite fijar una fecha exacta.':score<=-1.5?'La tirada no confirma con claridad un encuentro próximo; pesan más los factores que exigen definición, cambio o resolución antes de la concreción.':'La tirada muestra señales mezcladas: hay potencial de movimiento, pero también condiciones que impiden leerlo como un encuentro inmediato.';
+ return {verdict,signals};
+}
+function directAnswer(){
+ const p=questionProfile(state.question),ta=timingAssessment();
+ if(ta)return `<p>${ta.verdict}</p><div class="reading-note"><b>Qué sostiene esta respuesta:</b> ${ta.signals.slice(0,4).join('; ')}.</div>`;
+ const positions=spreads[state.spread][1],last=state.selections[state.selections.length-1],lastRole=positionRole(positions[positions.length-1]);
+ if(last)return `<p>La respuesta central no está en una sola carta. El cierre de la tirada queda marcado por <b>${last.card}</b> en “${positions[positions.length-1]}”, que aporta ${conciseCore(last)}. El resto de las posiciones explica qué condiciones llevan hasta ese punto.</p>`;
+ return '';
+}
+function buildNarrative(){
+ const name=spreads[state.spread][0],p=spreads[state.spread][1],s=state.selections,core=i=>`<b>${s[i].card}</b> (${conciseCore(s[i])})`;
+ if(name==='Amor y evolución')return `<p><strong>Estado del vínculo.</strong> ${core(0)} muestra cómo está funcionando hoy la dinámica. ${core(1)} señala lo que falta o necesita activarse para que la situación pueda evolucionar.</p><p><strong>Nudo central.</strong> ${core(2)} ocupa el bloqueo, por lo que esa energía es la que más limita el movimiento. ${core(3)} no promete un resultado: indica qué cambio de comprensión o de forma necesita producirse para salir de ese nudo.</p><p><strong>Dirección.</strong> ${core(4)} muestra hacia dónde tiende la dinámica si nada esencial cambia. Por eso la carta final se lee junto al bloqueo y al aprendizaje, no de manera aislada.</p>`;
+ if(name==='Situación · Obstáculo · Consejo')return `<p><strong>Situación.</strong> ${core(0)} define el escenario de partida.</p><p><strong>Conflicto.</strong> ${core(1)} muestra qué impide que la situación se resuelva de forma directa.</p><p><strong>Respuesta operativa.</strong> ${core(2)} indica el criterio con el que conviene leer o actuar frente a ese obstáculo.</p>`;
+ if(name==='Pasado · Presente · Futuro')return `<p>${core(0)} funciona como antecedente; ${core(1)} muestra el punto en el que la situación se encuentra ahora; ${core(2)} describe la tendencia si la dinámica presente continúa. El futuro no se lee separado del puente entre pasado y presente.</p>`;
+ if(name==='Relación')return `<p><strong>Dos posiciones.</strong> ${core(0)} y ${core(1)} muestran cómo entra cada parte en el vínculo.</p><p><strong>Lo que se forma entre ambos.</strong> ${core(2)} es la carta decisiva para entender la dinámica compartida.</p><p><strong>Criterio de evolución.</strong> ${core(3)} señala qué necesita el vínculo para ordenarse o hacerse más claro.</p>`;
+ if(name==='Decisión — Dos caminos')return `<p><strong>Punto de partida:</strong> ${core(0)}.</p><p><strong>Camino A:</strong> ${core(1)} conduce hacia ${core(2)}.</p><p><strong>Camino B:</strong> ${core(3)} conduce hacia ${core(4)}.</p><p>La comparación debe hacerse por coherencia y consecuencias, no por elegir automáticamente la carta “más positiva”.</p>`;
+ if(name==='Cruz Celta — 10 cartas')return `<p><strong>Núcleo:</strong> ${core(0)} cruzado por ${core(1)} define el conflicto principal. La base ${core(2)} y el pasado ${core(3)} explican de dónde viene.</p><p><strong>Desarrollo:</strong> ${core(4)} muestra la posibilidad consciente y ${core(5)} el próximo movimiento. ${core(6)} y ${core(7)} describen actitud y entorno.</p><p><strong>Cierre:</strong> ${core(8)} concentra expectativas o temores y ${core(9)} muestra la tendencia final bajo la dinámica actual.</p>`;
+ return `<p>La tirada se lee como una secuencia. ${s.map((x,i)=>`${p[i]}: ${core(i)}`).join(' · ')}. El sentido aparece en cómo una posición modifica a la siguiente, no en sumar definiciones aisladas.</p>`;
+}
+function buildGlobalReading(){
+ const positions=spreads[state.spread][1],s=state.selections,p=questionProfile(state.question);let parts=[];
+ const obstacle=positions.findIndex(x=>positionRole(x)==='obstacle'),direction=positions.findIndex(x=>['result','advice'].includes(positionRole(x)));
+ if(state.topic==='Amor'||state.topic==='Vínculos'){
+  if(s.length>=2)parts.push(`La lectura muestra un vínculo cuya dinámica actual está marcada por <b>${s[0].card}</b>: ${conciseCore(s[0])}. ${s[1]?`La segunda posición introduce <b>${s[1].card}</b>, por lo que el proceso necesita ${conciseCore(s[1])}.`:''}`);
+  if(obstacle>=0)parts.push(`El punto que más condiciona la evolución aparece en <b>${positions[obstacle]} — ${s[obstacle].card}</b>: ${conciseCore(s[obstacle])}. Esa carta pesa más que una lectura optimista de las demás porque ocupa justamente la función de bloqueo.`);
+  if(s.some(x=>x.card==='La Muerte'))parts.push('La presencia de La Muerte indica que la relación no puede resolverse simplemente “siguiendo igual”: necesita una transformación concreta de la forma en que se sostiene.');
+  if(s.some(x=>x.card==='El Diablo'))parts.push('El Diablo mantiene intensidad, deseo o apego, pero también advierte que la atracción puede coexistir con dependencia o falta de definición. No conviene confundir magnetismo con disponibilidad real.');
+  if(p.distance&&s.some(x=>x.card==='El Mundo'))parts.push('Como la pregunta menciona distancia y aparece El Mundo, el factor geográfico o la necesidad de cerrar una etapa antes de concretar otra adquiere un peso especialmente fuerte.');
+ } else {
+  parts.push(`El eje de la lectura parte de <b>${s[0].card}</b> (${conciseCore(s[0])}) y se desarrolla a través de las posiciones hasta <b>${s[s.length-1].card}</b> (${conciseCore(s[s.length-1])}).`);
+  if(obstacle>=0)parts.push(`El principal condicionante es <b>${s[obstacle].card}</b> en ${positions[obstacle].toLowerCase()}: ${conciseCore(s[obstacle])}.`);
+ }
+ const ta=timingAssessment();if(ta)parts.push(ta.verdict);
+ return parts.map(x=>`<p>${x}</p>`).join('');
+}
+function learningExplanation(){
+ const data=state.selections.map(s=>cardParts(s.card)),majorsN=data.filter(d=>d.type==='major').length;
+ return `<ul class="analysis-list"><li><b>Pregunta:</b> el motor detecta el foco concreto de la consulta: <span class="question-focus">${escapeHTML(questionFocus())}</span>.</li><li><b>Posiciones:</b> una misma carta cambia de función si aparece como estado, bloqueo, necesidad, consejo o resultado.</li><li><b>Jerarquía:</b> en esta tirada aparecen ${majorsN} Arcanos Mayores; cuanto mayor es su peso, más se lee el proceso global y menos un hecho aislado.</li><li><b>Conexión:</b> se comparan cartas consecutivas, repeticiones, contrastes, inversiones y palos antes de formular el cierre.</li><li><b>Síntesis:</b> la conclusión responde a la pregunta y evita convertir una carta aislada en una afirmación absoluta.</li></ul>`;
+}
+function renderCurrentReading(target){
+ const positions=spreads[state.spread][1];
+ const items=state.selections.map((s,i)=>`<div class="block with-img">${cardImg(s.card,s.rev,'sm')}<div><span class="tag">${escapeHTML(positions[i])}</span><h3>${escapeHTML(s.card)}${s.rev?' · Invertida':''}</h3><p>${positionInterpretation(s,positions[i],i)}</p></div></div>`).join('');
+ const rels=[];for(let i=0;i<state.selections.length-1;i++){const rel=relationBetween(state.selections[i],state.selections[i+1],positions[i],positions[i+1]);rels.push(`<div class="relation"><b>${escapeHTML(state.selections[i].card)} → ${escapeHTML(state.selections[i+1].card)}</b><span class="badge-soft">${rel.type}</span><p>${rel.sentence}</p></div>`)}
+ const q=escapeHTML(state.question||'Pregunta abierta de práctica.');const patterns=detectPatterns();const global=buildGlobalReading();
+ document.getElementById(target||'result').innerHTML=`<div class="block reading-context"><span class="tag">CONTEXTO DE LECTURA</span><h3>${escapeHTML(state.topic)} · ${escapeHTML(spreads[state.spread][0])}</h3><p>${q}</p><small class="muted">Foco interpretativo: ${escapeHTML(questionFocus())}.</small></div>
+ <div class="block direct-answer"><span class="tag">RESPUESTA A TU PREGUNTA</span><h3>Qué marca la tirada, en concreto</h3>${directAnswer()}</div>
+ <div class="reading-grid">${items}</div>
+ <div class="block narrative"><span class="tag">DESARROLLO DE LA TIRADA</span><h3>Cómo se construye el mensaje</h3>${buildNarrative()}</div>
+ <div class="block"><span class="tag">RELACIÓN ENTRE CARTAS</span><h3>Cómo dialogan dentro de la tirada</h3><div class="relations">${rels.join('')}</div></div>
+ <div class="block"><span class="tag">PATRONES</span><h3>Qué pesa más en el conjunto</h3><ul class="analysis-list">${patterns.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+ <div class="block global-reading"><span class="tag">LECTURA GLOBAL</span><h3>Síntesis profesional</h3>${global}</div>
+ <div class="block"><span class="tag">MODO APRENDIZAJE</span><h3>Por qué el Entrenador llegó a esta lectura</h3>${learningExplanation()}</div>`;
+ if(typeof teraOn==='function'&&teraOn())document.getElementById(target||'result').insertAdjacentHTML('beforeend',evolutiveBlock());
+ const clean=document.createElement('div');clean.innerHTML=global;
+ state.lastReading={id:Date.now(),date:new Date().toLocaleString(),topic:state.topic,question:state.question,spread:spreads[state.spread][0],spreadIndex:state.spread,positions:[...positions],selections:state.selections.map(s=>({...s})),global:clean.textContent};
+}
+function buildReading(){
+ const missing=state.selections.findIndex(s=>!s.card);if(missing>=0){alert(`Elige una carta válida para la posición ${missing+1}. Puedes escribir su nombre o seleccionarla de la lista.`);return}
+ document.getElementById('w1').style.display='none';document.getElementById('w2').style.display='none';document.getElementById('w3').style.display='none';document.getElementById('w4').style.display='block';step(4);renderCurrentReading();
+}
+function saveReading(){
+ if(!state.lastReading)return;let h=JSON.parse(localStorage.getItem('tarotHistory')||'[]');
+ const item={...state.lastReading,id:state.lastReading.id||Date.now()};h=h.filter(x=>x.id!==item.id);h.unshift(item);localStorage.setItem('tarotHistory',JSON.stringify(h.slice(0,100)));logActivity();go('historial');
+}
+function openSavedReading(index){
+ const h=JSON.parse(localStorage.getItem('tarotHistory')||'[]'),x=h[index];if(!x||!x.selections)return;
+ state.topic=x.topic||'General';state.question=x.question||'';state.spread=Number.isInteger(x.spreadIndex)?x.spreadIndex:spreads.findIndex(s=>s[0]===x.spread);if(state.spread<0)state.spread=0;state.selections=x.selections.map(s=>({...s}));state.lastReading={...x};
+ go('tirada');document.getElementById('w1').style.display='none';document.getElementById('w2').style.display='none';document.getElementById('w3').style.display='none';document.getElementById('w4').style.display='block';step(4);renderCurrentReading();state.lastReading={...x};
+ if(x.practice){const pr=x.practice;document.getElementById('result').insertAdjacentHTML('afterbegin',`<div class="block"><span class="tag">TU PRÁCTICA · C.L.A.R.O. ${pr.score}/5</span>${(pr.mine||[]).map((m,i)=>`<p><b>${escapeHTML(x.positions[i])} · ${escapeHTML(x.selections[i].card)}:</b> ${escapeHTML(m||'(vacío)')}</p>`).join('')}<p><b>Tu síntesis:</b> ${escapeHTML(pr.synth||'(vacía)')}</p>${pr.lesson?`<div class="reading-note"><b>Lo que aprendiste:</b> ${escapeHTML(pr.lesson)}</div>`:''}</div>`)}
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function deleteSavedReading(index,e){
+ if(e)e.stopPropagation();const h=JSON.parse(localStorage.getItem('tarotHistory')||'[]');if(!h[index])return;if(!confirm('¿Eliminar esta tirada guardada?'))return;h.splice(index,1);localStorage.setItem('tarotHistory',JSON.stringify(h));renderHistory();
+}
+function renderHistory(){
+ const h=JSON.parse(localStorage.getItem('tarotHistory')||'[]'),c=document.getElementById('history');
+ c.innerHTML=h.length?h.map((x,i)=>`<div class="row" onclick="openSavedReading(${i})"><div class="history-main"><b>${escapeHTML(x.spread)}</b>${x.practice?`<span class="badge-soft">Práctica · ${x.practice.score}/5</span>`:''}<div class="muted">${escapeHTML(x.topic)} · ${escapeHTML(x.question||'Sin pregunta')}</div>${x.selections?`<small class="muted">${x.selections.map(s=>escapeHTML(s.card)+(s.rev?' · invertida':'')).join(' · ')}</small>`:''}<span class="history-date muted">${escapeHTML(x.date)}</span><div class="history-open-note">Haz clic para volver a abrir y repasar esta lectura.</div></div><div class="history-actions"><button class="history-btn" onclick="event.stopPropagation();openSavedReading(${i})">Abrir</button><button class="history-btn danger" onclick="deleteSavedReading(${i},event)">Eliminar</button></div></div>`).join(''):'<div class="card muted">Todavía no guardaste ninguna lectura ni práctica.</div>';
+}
+function renderLibrary(){
+  const q=normalize(document.getElementById('search').value||'');const c=document.getElementById('library');
+  const groups=[['Arcanos Mayores','22 cartas',majors],...suitNames.map(s=>[`${s} · ${SUIT_META[s].element}`,'14 cartas',minorsBySuit[s]])];
+  const match=x=>{const d=cardParts(x);return normalize(x).includes(q)||d.tags.some(t=>normalize(t).includes(q))};
+  c.innerHTML=groups.map(([title,count,list])=>{const filtered=list.filter(match);if(!filtered.length)return'';return `<section class="libgroup"><h3 class="libgroup-title">${title} <span>${count}</span></h3><div class="library">${filtered.map(x=>{const d=cardParts(x);return `<div class="libcard" onclick="openCard('${x}')">${cardImg(x,false)}<b>${x}</b><small>${d.tags.join(' · ')}</small></div>`}).join('')}</div></section>`}).join('')||'<div class="card muted">No encontré cartas con esa búsqueda.</div>';
+}
+/* ===== v1.0: entrenamiento, plan, progreso ===== */
+const CODIGOS=['CLARO78'];
+const SUIT_FILE={Bastos:'wands',Copas:'cups',Espadas:'swords',Oros:'pents'};
+function cardFile(name){const mi=majors.indexOf(name);if(mi>=0)return `cartas/m${String(mi).padStart(2,'0')}.webp`;const d=cardParts(name);if(d.type!=='minor')return '';return `cartas/${SUIT_FILE[d.suit]}${String(ranks.indexOf(d.rank)+1).padStart(2,'0')}.webp`}
+function cardImg(name,rev,size){return `<div class="tcard-wrap ${size||''}"><img class="tcard${rev?' rev':''}" src="${cardFile(name)}" alt="${escapeHTML(name)}${rev?' invertida':''}" loading="lazy" onerror="this.outerHTML='<div class=&quot;tcard ph&quot;>'+this.alt+'</div>'"></div>`}
+function toast(m){const el=document.getElementById('toast');el.textContent=m;el.style.display='block';clearTimeout(toast._t);toast._t=setTimeout(()=>el.style.display='none',2400)}
+function todayKey(d){d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function drawCards(n,revChance){return shuffle(cards).slice(0,n).map(c=>({card:c,rev:Math.random()<(revChance??0.25)}))}
+
+// Progreso guardado en el dispositivo
+function blankP(){return {quiz:{},practices:[],days:{},daily:null,activity:[],journal:[],flashRounds:0}}
+function loadP(){try{return Object.assign(blankP(),JSON.parse(localStorage.getItem('tt_progress')||'{}'))}catch(e){return blankP()}}
+function saveP(p){try{localStorage.setItem('tt_progress',JSON.stringify(p))}catch(e){}}
+function logActivity(){const p=loadP(),k=todayKey();if(!p.activity.includes(k)){p.activity.push(k);p.activity=p.activity.slice(-400)}saveP(p)}
+function streak(){const set=new Set(loadP().activity);const d=new Date();let n=0;if(!set.has(todayKey(d)))d.setDate(d.getDate()-1);while(set.has(todayKey(d))){n++;d.setDate(d.getDate()-1)}return n}
+
+// Acceso
+function unlock(){const v=document.getElementById('gateCode').value.trim().toUpperCase();if(CODIGOS.includes(v)){try{localStorage.setItem('tt_access',v)}catch(e){}document.getElementById('gate').style.display='none';renderHome()}else document.getElementById('gateErr').textContent='Ese código no es válido. Revisa el email de tu compra.'}
+function checkAccess(){try{const q=new URLSearchParams(location.search);const c=(q.get('codigo')||q.get('code')||'').trim().toUpperCase();if(CODIGOS.includes(c))localStorage.setItem('tt_access',c);const t=(q.get('tera')||'').trim().toUpperCase();if(CODIGOS_TERA.includes(t))localStorage.setItem('tt_tera',t)}catch(e){}let ok=false;try{ok=CODIGOS.includes(localStorage.getItem('tt_access'))}catch(e){}document.getElementById('gate').style.display=ok?'none':'grid'}
+
+// Práctica guiada: lees tú, después comparas
+const PRACTICE_Q={
+ 'Amor':['¿Qué necesito comprender sobre mi vida afectiva en este momento?','¿Qué me impide abrirme a una relación nueva?','¿Qué necesita esta relación para crecer?','¿Qué aprendizaje me deja mi última relación?'],
+ 'Vínculos':['¿Qué dinámica está influyendo en este vínculo?','¿Qué necesito comprender del conflicto con mi familia?','¿Qué aporta esta amistad a mi vida hoy?'],
+ 'Trabajo':['¿Qué necesito comprender sobre mi situación laboral actual?','¿Qué me frena para dar el próximo paso en mi trabajo?','¿Qué recurso tengo y no estoy usando en mi proyecto?','¿Cómo puedo mejorar el clima con mi equipo?'],
+ 'Dinero':['¿Qué está afectando mi estabilidad económica?','¿Qué actitud me conviene frente a mis finanzas este mes?','¿Dónde se me escapa la energía con el dinero?'],
+ 'Autoconocimiento':['¿Qué patrón se repite en mí y necesito mirar?','¿Qué necesito integrar en esta etapa de mi vida?','¿Qué me quiere mostrar este momento de cansancio?','¿Qué parte mía pide más espacio?'],
+ 'Decisión':['¿Qué necesito tener en cuenta antes de decidir si me mudo?','¿Me conviene aceptar esta propuesta o seguir como estoy?','¿Qué criterio me ayuda a elegir entre dos caminos?'],
+ 'General':['¿Qué necesito saber para este nuevo ciclo?','¿Cuál es la energía principal de esta semana?','¿Qué me conviene soltar ahora?','¿Qué necesito comprender sobre esta situación?']
+};
+const SPREAD_TOPICS={4:'Decisión',5:'Vínculos',6:'Amor',7:'General',8:'Trabajo',9:'Dinero',10:'Autoconocimiento',11:'Autoconocimiento'};
+const CLARO_CHECKS=[['C · Contexto','Tuve en cuenta la pregunta y la función de cada posición.'],['L · Lectura individual','Leí cada carta según su lugar, no la definición de memoria.'],['A · Asociaciones','Me fijé en palos, Arcanos Mayores, invertidas o repeticiones.'],['R · Relación','Conecté las cartas entre sí en una historia.'],['O · Observación final','Cerré con un mensaje claro en una frase.']];
+const STOP=new Set('que con por para sin del entre todavia algo esta este ese esa desde hacia cada otra otro sobre puede tiene parte forma manera situacion necesidad capacidad dificultad'.split(' '));
+let practice=null;
+function showTrainMenu(){document.getElementById('trainMenu').style.display='block';document.getElementById('practiceBox').style.display='none';document.getElementById('quizBox').style.display='none';const q=loadP().quiz,n=cards.filter(c=>q[c]&&q[c].fail>0&&q[c].streak<3).length;document.getElementById('hardCount').textContent=n?`${n} cartas para repasar.`:'Las que más fallaste.'}
+function startPractice(opts){
+ opts=opts||{};const spi=opts.spread??3;
+ const topic=opts.topic||SPREAD_TOPICS[spi]||shuffle(['Amor','Trabajo','Autoconocimiento','General','Dinero'])[0];
+ const question=opts.question||shuffle(PRACTICE_Q[topic]||PRACTICE_Q.General)[0];
+ practice={spread:spi,topic,question,fixedQ:opts.question||null,selections:drawCards(spreads[spi][1].length),day:opts.day||null,prompt:opts.prompt||''};
+ go('entrenar');document.getElementById('trainMenu').style.display='none';renderPracticeWrite();
+}
+function renderPracticeWrite(){
+ const p=practice,pos=spreads[p.spread][1],b=document.getElementById('practiceBox');b.style.display='block';
+ b.innerHTML=`<div class="card"><span class="tag">PRÁCTICA${p.day?' · DÍA '+p.day:''}</span><h3>${escapeHTML(p.question)}</h3><p class="muted">${escapeHTML(p.topic)} · ${escapeHTML(spreads[p.spread][0])}</p>${p.prompt?`<div class="notice">${escapeHTML(p.prompt)}</div>`:''}
+ <div class="drawn">${p.selections.map((s,i)=>`<figure>${cardImg(s.card,s.rev)}<figcaption><b>${i+1}. ${escapeHTML(pos[i])}</b><br>${escapeHTML(s.card)}${s.rev?' (invertida)':''}</figcaption></figure>`).join('')}</div>
+ <p><b>Paso 1 · Tu lectura.</b> Escribe qué te dice cada carta en su posición. No busques el significado: mira la imagen y piensa en la pregunta.</p>
+ ${p.selections.map((s,i)=>`<div class="formrow"><label>${i+1}. ${escapeHTML(pos[i])} · ${escapeHTML(s.card)}${s.rev?' (invertida)':''}</label><textarea id="pw${i}" rows="2" placeholder="Qué veo y qué me dice en esta posición..."></textarea></div>`).join('')}
+ <div class="formrow"><label>Tu síntesis en una frase</label><textarea id="pwS" rows="2" placeholder="El mensaje completo de la tirada es..."></textarea></div>
+ <div class="row2"><button class="cta gold" onclick="comparePractice()">Ver la lectura del Entrenador</button><button class="ghost" onclick="startPractice({spread:practice.spread,topic:practice.topic,day:practice.day,prompt:practice.prompt,question:practice.fixedQ})">Otras cartas</button><button class="ghost" onclick="showTrainMenu()">Volver</button></div></div>`;
+ window.scrollTo({top:0});
+}
+// Ideas clave de la carta: {n: palabra normalizada para comparar, l: palabra con tildes para mostrar}
+function keyIdeas(sel){const d=cardParts(sel.card);const txt=(sel.rev?d.rev:d.up).toLowerCase();const seen=new Set(),out=[];
+ [...d.tags,...txt.split(/[^a-záéíóúüñ]+/)].forEach(w=>{const n=normalize(w);if(n.length<4||(n.length<6&&!d.tags.includes(w))||STOP.has(n)||seen.has(n))return;seen.add(n);out.push({n,l:w})});return out}
+function stemHit(text,word){return text.includes(word.n.slice(0,Math.max(5,word.n.length-3)))}
+function comparePractice(){
+ const p=practice,pos=spreads[p.spread][1];
+ p.mine=p.selections.map((_,i)=>document.getElementById('pw'+i).value.trim());p.synth=document.getElementById('pwS').value.trim();
+ if(!p.mine.some(x=>x)&&!p.synth&&!confirm('Todavía no escribiste nada. Leer primero es lo que te hace avanzar. ¿Quieres ver la lectura igual?'))return;
+ state.topic=p.topic;state.question=p.question;state.spread=p.spread;state.selections=p.selections.map(s=>({...s}));
+ const fb=p.selections.map((s,i)=>{const ideas=keyIdeas(s),txt=normalize(p.mine[i]+' '+p.synth);const hit=ideas.filter(w=>stemHit(txt,w)),miss=ideas.filter(w=>!stemHit(txt,w)).slice(0,4);
+  return `<div class="block with-img">${cardImg(s.card,s.rev,'sm')}<div><span class="tag">${escapeHTML(pos[i])}</span><h3>${escapeHTML(s.card)}${s.rev?' · Invertida':''}</h3><p class="muted"><b>Tu lectura:</b> ${escapeHTML(p.mine[i]||'(vacío)')}</p>${hit.length?`<div class="hint ok">✓ Tocaste ideas clave: ${hit.slice(0,4).map(w=>w.l).join(', ')}</div>`:''}${miss.length?`<div class="hint miss">➜ Ideas que podías sumar: ${miss.map(w=>w.l).join(', ')}</div>`:''}</div></div>`}).join('');
+ document.getElementById('practiceBox').innerHTML=`<div class="card"><span class="tag">PASO 2 · COMPARA</span><h3>${escapeHTML(p.question)}</h3><p class="muted">Tu síntesis: ${escapeHTML(p.synth||'(vacía)')}</p></div><div class="result" style="margin-top:14px">${fb}</div>
+ <h3 style="margin-top:22px">La lectura del Entrenador</h3><div class="result" id="practiceResult"></div>
+ <div class="card" style="margin-top:14px"><span class="tag">PASO 3 · AUTOEVALUACIÓN C.L.A.R.O.</span><h3>¿Qué hiciste bien en tu lectura?</h3><div class="checks">${CLARO_CHECKS.map((c,i)=>`<label><input type="checkbox" id="ck${i}"><span><b>${c[0]}</b> · ${c[1]}</span></label>`).join('')}</div>
+ <div class="formrow"><label>Una frase de aprendizaje</label><input class="input" id="pwL" placeholder="Hoy aprendí que..."></div>
+ <button class="cta" onclick="finishPractice()">Guardar práctica</button></div>`;
+ renderCurrentReading('practiceResult');window.scrollTo({top:0});
+}
+function finishPractice(){
+ const p=practice,score=CLARO_CHECKS.filter((_,i)=>document.getElementById('ck'+i).checked).length,lesson=document.getElementById('pwL').value.trim();
+ const P=loadP();P.practices.push({date:todayKey(),score,spread:spreads[p.spread][0],day:p.day});P.practices=P.practices.slice(-200);if(p.day)P.days[p.day]=true;saveP(P);logActivity();
+ const h=JSON.parse(localStorage.getItem('tarotHistory')||'[]');
+ h.unshift({id:Date.now(),date:new Date().toLocaleString(),topic:p.topic,question:p.question,spread:spreads[p.spread][0],spreadIndex:p.spread,positions:[...spreads[p.spread][1]],selections:p.selections.map(s=>({...s})),global:state.lastReading?state.lastReading.global:'',practice:{mine:p.mine,synth:p.synth,score,lesson}});
+ localStorage.setItem('tarotHistory',JSON.stringify(h.slice(0,100)));
+ toast(`Práctica guardada · C.L.A.R.O. ${score}/5`);practice=null;
+ if(p.day)go('plan');else showTrainMenu();
+}
+
+// Flash de cartas, con repaso de las difíciles
+let quiz=null;
+function quizPool(o){
+ let pool=o.cards||(o.majors?[...majors]:o.suits?cards.filter(c=>o.suits.some(s=>c.endsWith(' de '+s))):[...cards]);
+ if(o.hard){const q=loadP().quiz;pool=cards.filter(c=>q[c]&&q[c].fail>0&&q[c].streak<3).sort((a,b)=>q[b].fail-q[a].fail).slice(0,20);if(!pool.length&&o.fallback)pool=[...cards]}
+ return pool;
+}
+function weightedPick(pool,n){const q=loadP().quiz;return pool.map(c=>{const r=q[c]||{ok:0,fail:0};return {c,w:1+r.fail*2-Math.min(r.ok,3)*.3+Math.random()*1.5}}).sort((a,b)=>b.w-a.w).slice(0,n).map(x=>x.c)}
+function startQuiz(o){
+ const pool=quizPool(o);if(!pool.length){toast('Todavía no hay cartas difíciles: haz una ronda de Flash primero.');return}
+ const n=Math.min(10,pool.length);
+ quiz={o,items:shuffle(weightedPick(pool,n)).map((c,i)=>({card:c,rev:o.rev?true:Math.random()<.2,type:(!o.rev&&i%3===2)?'name':'meaning'})),i:0,ok:0,day:o.day||null};
+ go('entrenar');document.getElementById('trainMenu').style.display='none';renderQuiz();
+}
+function renderQuiz(){
+ const z=quiz,b=document.getElementById('quizBox');b.style.display='block';
+ if(z.i>=z.items.length)return quizEnd();
+ const it=z.items[z.i],opts=shuffle([it.card,...shuffle(cards.filter(c=>c!==it.card)).slice(0,3)]);it.opts=opts;
+ const mean=c=>{const d=cardParts(c);return it.rev?d.rev:d.up};
+ const body=it.type==='meaning'
+  ?`<div>${cardImg(it.card,it.rev,'lg')}</div><h3 style="text-align:center;margin-top:12px">${escapeHTML(it.card)}${it.rev?' · Invertida':''}</h3><p class="muted" style="text-align:center">¿Qué significa en esta orientación?</p><div class="opts">${opts.map((c,k)=>`<button class="opt" onclick="answerQuiz(${k})">${escapeHTML(mean(c))}</button>`).join('')}</div>`
+  :`<p class="muted">¿Qué carta${it.rev?' invertida':''} expresa esta idea?</p><div class="notice" style="font-size:17px">“${escapeHTML(mean(it.card))}”</div><div class="opts opt-imgs">${opts.map((c,k)=>`<button class="opt" onclick="answerQuiz(${k})">${cardImg(c,it.rev)}<div style="margin-top:6px">${escapeHTML(c)}</div></button>`).join('')}</div>`;
+ b.innerHTML=`<div class="card"><div class="row2" style="justify-content:space-between"><span class="tag">FLASH · ${z.i+1} / ${z.items.length}</span><span class="muted">Aciertos: ${z.ok}</span></div><div class="bar" style="margin:12px 0 16px"><i style="width:${z.i/z.items.length*100}%"></i></div>${body}<div id="quizFb"></div></div>`;
+}
+function answerQuiz(k){
+ const z=quiz,it=z.items[z.i];if(it.done)return;it.done=true;
+ const right=it.opts.indexOf(it.card),ok=k===right;if(ok)z.ok++;
+ document.querySelectorAll('#quizBox .opt').forEach((el,i)=>{if(i===right)el.classList.add('ok');else if(i===k)el.classList.add('bad');el.disabled=true});
+ const P=loadP(),r=P.quiz[it.card]||{ok:0,fail:0,streak:0};if(ok){r.ok++;r.streak++}else{r.fail++;r.streak=0}P.quiz[it.card]=r;saveP(P);
+ const d=cardParts(it.card);
+ document.getElementById('quizFb').innerHTML=`<div class="hint ${ok?'ok':'miss'}">${ok?'✓ ¡Bien!':'✗ Era '+escapeHTML(it.card)+'.'} <b>Ideas clave:</b> ${d.tags.join(', ')}${d.element?' · Elemento '+d.element:''}</div><div style="margin-top:12px"><button class="cta" onclick="quiz.i++;renderQuiz()">${z.i+1<z.items.length?'Siguiente':'Ver resultado'}</button></div>`;
+ document.getElementById('quizFb').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function quizEnd(){
+ const z=quiz,P=loadP(),need=Math.ceil(z.items.length*.6),passed=z.ok>=need;P.flashRounds=(P.flashRounds||0)+1;if(z.day&&passed)P.days[z.day]=true;saveP(P);logActivity();
+ const pct=Math.round(z.ok/z.items.length*100);
+ document.getElementById('quizBox').innerHTML=`<div class="card" style="text-align:center"><span class="tag">RONDA TERMINADA</span><h2 style="font-size:44px;margin:14px 0;color:var(--gold)">${z.ok} / ${z.items.length}</h2><p class="muted">${pct>=80?'Excelente. Estas cartas ya te hablan.':pct>=60?'Vas bien. Las que fallaste van a volver más seguido.':'Es normal al principio: repite la ronda y vas a notar la diferencia.'}${z.day?(passed?` Día ${z.day} completo.`:` Para completar el día ${z.day} necesitas ${need} aciertos.`):''}</p><div class="row2" style="justify-content:center"><button class="cta" onclick="startQuiz(quiz.o)">Otra ronda</button><button class="ghost" onclick="${z.day?"go('plan')":'showTrainMenu()'}">Volver</button></div></div>`;
+}
+function practiceCard(name){closeModal();startQuiz({cards:[name,...shuffle(cards.filter(c=>c!==name)).slice(0,4)]})}
+
+// Carta del día
+const DAILY_PROMPTS=['¿Qué ves en la imagen que nunca habías notado?','¿Dónde aparece hoy la energía de esta carta en tu vida?','¿Qué te pide esta carta para hoy, en una acción concreta?','¿Qué emoción te despierta la imagen antes de pensar en el significado?','¿Qué personaje de la carta se parece a ti hoy?','Si esta carta fuera un consejo para alguien querido, ¿qué le dirías?','¿Qué parte de esta carta te incomoda, y por qué?'];
+function dailyCard(){const P=loadP(),k=todayKey();if(!P.daily||P.daily.date!==k){const d=drawCards(1,.2)[0];P.daily={date:k,card:d.card,rev:d.rev,note:''};saveP(P)}return P.daily}
+function renderDaily(){const d=dailyCard();
+ document.getElementById('dailyBox').innerHTML=`<span class="tag">CARTA DEL DÍA</span><div class="with-img" style="margin-top:12px">${cardImg(d.card,d.rev,'sm')}<div><b>${escapeHTML(d.card)}${d.rev?' · Invertida':''}</b><p class="muted" style="margin:6px 0;font-size:14px">${escapeHTML(DAILY_PROMPTS[new Date().getDay()])}</p></div></div><textarea id="dailyNote" rows="2" placeholder="Anota tu reflexión..." style="margin-top:8px">${escapeHTML(d.note||'')}</textarea><div class="row2" style="margin-top:8px"><button class="ghost" onclick="saveDaily()">Guardar</button><button class="ghost" onclick="openCard('${d.card}')">Ver ficha</button></div>`}
+function saveDaily(){const P=loadP();if(!P.daily)return;P.daily.note=document.getElementById('dailyNote').value.trim();P.journal=(P.journal||[]).filter(j=>j.date!==P.daily.date);if(P.daily.note){P.journal.unshift({...P.daily});P.days[1]=true}P.journal=P.journal.slice(0,365);saveP(P);logActivity();toast('Reflexión guardada');renderHome()}
+
+// Ficha de cada carta
+const REFLECT={Bastos:'¿Hacia dónde estoy poniendo mi energía y mi deseo?',Copas:'¿Qué estoy sintiendo y qué necesito emocionalmente?',Espadas:'¿Qué estoy pensando y qué necesito decir o decidir?',Oros:'¿Qué necesito construir, cuidar o sostener en lo concreto?'};
+function openCard(name){const d=cardParts(name),q=loadP().quiz[name];
+ const lens=d.type==='minor'?['Amor','Trabajo','Dinero','Autoconocimiento'].map(k=>`<li><b>${k}:</b> ${SUIT_META[d.suit].lens[k]}</li>`).join(''):(LOVE_MAJOR[name]?`<li><b>En el amor:</b> ${LOVE_MAJOR[name]}</li>`:'');
+ document.getElementById('modalBody').innerHTML=`<div class="with-img">${cardImg(name,false)}<div><span class="tag">${d.type==='major'?'ARCANO MAYOR':escapeHTML(d.suit+' · '+d.element)}</span><h2 style="margin:8px 0">${escapeHTML(name)}</h2><p class="muted">${d.tags.join(' · ')}</p>${q?`<small class="muted">Tu Flash: ${q.ok} aciertos · ${q.fail} errores</small>`:''}</div></div>
+ <h3>Derecha</h3><p>${escapeHTML(d.up)}.</p><h3>Invertida</h3><p>${escapeHTML(d.rev)}.</p>
+ ${lens?`<h3>${d.type==='minor'?'Cómo se lee según el tema':'En contexto'}</h3><ul>${lens}</ul>`:''}
+ <h3>Para observar</h3><p class="muted">${d.type==='major'?'Un Arcano Mayor habla de un proceso o una etapa, no de un detalle. ¿Qué etapa de la vida de quien consulta está marcando?':escapeHTML(REFLECT[d.suit])} Antes de leer el significado, mira la imagen: ¿quién aparece, qué hace, hacia dónde mira?</p>
+ <button class="ghost" onclick="practiceCard('${name}')">Practicar esta carta</button>`;
+ document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+
+// Plan de 21 días, enlazado a los módulos del ebook
+const PLAN=[
+ {w:'SEMANA 1 · CONOCER LAS CARTAS',t:'Tu primera carta',g:'Saca la carta del día, mira la imagen y escribe tu reflexión.',m:'Módulo 1 · Fundamentos del Tarot',a:{type:'daily'}},
+ {t:'Arcanos Mayores del 0 al 7',g:'El viaje empieza: del Loco al Carro.',m:'Módulo 3 · Los Arcanos Mayores',a:{type:'quiz',o:{cards:majors.slice(0,8)}}},
+ {t:'Arcanos Mayores del 8 al 14',g:'De la Fuerza a la Templanza: el trabajo interior.',m:'Módulo 3 · Los Arcanos Mayores',a:{type:'quiz',o:{cards:majors.slice(8,15)}}},
+ {t:'Arcanos Mayores del 15 al 21',g:'Del Diablo al Mundo: crisis, luz e integración.',m:'Módulo 3 · Los Arcanos Mayores',a:{type:'quiz',o:{cards:majors.slice(15)}}},
+ {t:'Bastos y Copas',g:'Fuego y agua: la acción y las emociones.',m:'Módulo 4 · Los Arcanos Menores',a:{type:'quiz',o:{suits:['Bastos','Copas']}}},
+ {t:'Espadas y Oros',g:'Aire y tierra: la mente y lo concreto.',m:'Módulo 4 · Los Arcanos Menores',a:{type:'quiz',o:{suits:['Espadas','Oros']}}},
+ {t:'Tu primera lectura completa',g:'Una carta, una pregunta y tu lectura escrita antes de mirar.',m:'Módulo 2 · El Sistema Visual de Interpretación',a:{type:'practice',o:{spread:0}},p:'Antes de escribir, describe la imagen: quién aparece, qué hace, qué colores dominan.'},
+ {w:'SEMANA 2 · CONECTAR LAS CARTAS',t:'Pasado, presente y futuro',g:'Tu primera tirada de tres: cómo una carta modifica a la siguiente.',m:'Módulo 6 · Tiradas de Tarot',a:{type:'practice',o:{spread:2}},p:'El futuro no se lee solo: léelo como consecuencia del puente entre pasado y presente.'},
+ {t:'Situación, obstáculo y consejo',g:'La tirada más útil para leerle a otra persona.',m:'Módulo 5 · Cómo Combinar Cartas',a:{type:'practice',o:{spread:3}},p:'Fíjate si el consejo responde de verdad al obstáculo.'},
+ {t:'Las invertidas',g:'Bloqueo, exceso, demora o proceso interno.',m:'Módulos 3 y 4',a:{type:'quiz',o:{rev:true}}},
+ {t:'Repaso de tus cartas difíciles',g:'Las que más fallaste vuelven hoy.',m:'Módulo 10 · Sistema de Práctica Continua',a:{type:'quiz',o:{hard:true,fallback:true}}},
+ {t:'Un vínculo',g:'Tu energía, la del otro y lo que se forma entre los dos.',m:'Módulo 6 · Tiradas de Tarot',a:{type:'practice',o:{spread:5}},p:'No leas lo que piensa la otra persona: lee la dinámica.'},
+ {t:'Trabajo y carrera',g:'Cinco cartas: situación, fortaleza, desafío, oportunidad y dirección.',m:'Módulo 6 · Tiradas de Tarot',a:{type:'practice',o:{spread:8}}},
+ {t:'Repaso de la semana',g:'Una ronda con las 78 cartas.',m:'Módulo 10 · Sistema de Práctica Continua',a:{type:'quiz',o:{}}},
+ {w:'SEMANA 3 · LEER CON CONFIANZA',t:'Decidir entre dos caminos',g:'Compara por coherencia, no por la carta más linda.',m:'Módulo 6 · Tiradas de Tarot',a:{type:'practice',o:{spread:4}}},
+ {t:'Dinero y estabilidad',g:'Dónde se escapa la energía y qué recurso hay.',m:'Módulo 6 · Tiradas de Tarot',a:{type:'practice',o:{spread:9}}},
+ {t:'Sombra y autoconocimiento',g:'El tarot como espejo: lo visible y lo oculto.',m:'Módulo 7 · Tarot para Autoconocimiento',a:{type:'practice',o:{spread:11}}},
+ {t:'Cuando te quedas en blanco',g:'Las 5 preguntas de rescate, aplicadas a una tirada.',m:'Módulo 9 · Bloqueos y Cómo Superarlos',a:{type:'practice',o:{spread:10}},p:'Si te trabas: ¿qué se pregunta? ¿qué función tiene la posición? ¿qué ves en la imagen? ¿cómo se conectan? ¿cuál es el mensaje en una frase?'},
+ {t:'Leerle a otra persona',g:'Ética y cómo devolver una lectura.',m:'Módulo 8 · Cómo Empezar a Ganar Dinero con Tarot',a:{type:'guide'}},
+ {t:'La Herradura',g:'Siete cartas: pasado, presente, oculto, obstáculo, entorno, consejo y resultado.',m:'Módulo 6 · Tiradas de Tarot',a:{type:'practice',o:{spread:12}}},
+ {t:'La Cruz Celta',g:'La lectura completa. Compara con tu primera práctica.',m:'Conclusiones finales',a:{type:'practice',o:{spread:13}},p:'Cuando termines, abre en Mis lecturas tu práctica del día 7 y fíjate cuánto cambió tu forma de leer.'}
+];
+function nextDay(){const P=loadP();for(let i=1;i<=21;i++)if(!P.days[i])return i;return null}
+function openDay(n){const d=PLAN[n-1],a=d.a;
+ if(a.type==='daily'){go('inicio');setTimeout(()=>{const el=document.getElementById('dailyNote');if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.focus()}},150);return}
+ if(a.type==='quiz')return startQuiz({...a.o,day:n});
+ if(a.type==='practice')return startPractice({...a.o,day:n,prompt:d.p||''});
+ if(a.type==='guide'){const P=loadP();P.days[n]=true;saveP(P);logActivity();go('manual');toast(`Día ${n} completo. Lee la parte de ética y de devolución.`)}
+}
+function openNextDay(){const n=nextDay();if(n)openDay(n);else{toast('¡Terminaste el plan! Sigue con prácticas libres.');navigate('entrenar')}}
+function renderPlan(){const P=loadP();let html='',done=0;
+ PLAN.forEach((d,i)=>{const n=i+1,ok=!!P.days[n];if(ok)done++;if(d.w)html+=`<div class="week-title">${d.w}</div>`;html+=`<div class="day${ok?' done':''}"><div class="n">${ok?'✓':n}</div><div><b>${escapeHTML(d.t)}</b><div class="muted" style="font-size:14px">${escapeHTML(d.g)}</div><small style="color:var(--gold)">📘 ${escapeHTML(d.m)}</small></div><button class="${ok?'ghost':'cta'}" onclick="openDay(${n})">${ok?'Repetir':'Empezar'}</button></div>`});
+ document.getElementById('days').innerHTML=html;document.getElementById('planPill').textContent=`${done} / 21`;document.getElementById('planBar').style.width=(done/21*100)+'%'}
+
+// Inicio y progreso
+function renderHome(){const s=streak();document.getElementById('streakPill').textContent=`🔥 Racha: ${s} día${s===1?'':'s'}`;const n=nextDay();
+ if(n){const d=PLAN[n-1];document.getElementById('nextTitle').textContent=`Día ${n} · ${d.t}`;document.getElementById('nextText').textContent=`${d.g} (${d.m})`}
+ else{document.getElementById('nextTitle').textContent='Plan completo 🎉';document.getElementById('nextText').textContent='Ahora tu entrenamiento es libre: una práctica por día mantiene tu lectura afilada.'}
+ renderDaily()}
+function renderProgress(){const P=loadP(),h=JSON.parse(localStorage.getItem('tarotHistory')||'[]'),q=P.quiz;
+ const tot=Object.values(q).reduce((a,r)=>({ok:a.ok+r.ok,fail:a.fail+r.fail}),{ok:0,fail:0}),acc=tot.ok+tot.fail?Math.round(tot.ok/(tot.ok+tot.fail)*100):0;
+ const mastered=cards.filter(c=>q[c]&&q[c].streak>=3).length;
+ document.getElementById('kpis').innerHTML=[[streak(),'días de racha'],[Object.keys(P.days).length+'/21','días del plan'],[P.practices.length,'prácticas'],[h.filter(x=>!x.practice).length,'tiradas leídas'],[acc+'%','aciertos en Flash'],[mastered+'/78','cartas dominadas'],[P.flashRounds||0,'rondas de Flash'],[(P.journal||[]).length,'reflexiones']].map(([v,l])=>`<div class="card kpi"><strong>${v}</strong><small>${l}</small></div>`).join('');
+ const last=P.practices.slice(-12);
+ document.getElementById('practiceChart').innerHTML=last.length?`<div style="display:flex;gap:8px;align-items:flex-end;height:120px;margin-top:10px">${last.map(p=>`<div title="${p.date} · ${p.score}/5" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><small>${p.score}</small><div style="width:100%;max-width:32px;height:${Math.max(6,p.score/5*90)}px;border-radius:6px;background:linear-gradient(180deg,var(--gold),var(--violet2))"></div></div>`).join('')}</div>`:'<p class="muted">Todavía no hiciste prácticas.</p>';
+ const hard=cards.filter(c=>q[c]&&q[c].fail>0&&q[c].streak<3).sort((a,b)=>q[b].fail-q[a].fail).slice(0,12);
+ document.getElementById('hardList').innerHTML=hard.length?hard.map(c=>`<figure onclick="openCard('${c}')" style="cursor:pointer">${cardImg(c,false)}<figcaption>${escapeHTML(c)}<br>${q[c].fail} error${q[c].fail>1?'es':''}</figcaption></figure>`).join(''):'<p class="muted">Ninguna por ahora. Cuando hagas rondas de Flash, aquí aparecen las que más te cuestan. Una carta queda dominada con 3 aciertos seguidos.</p>'}
+
+// Copia de seguridad
+function exportData(){const data={v:1,progress:loadP(),history:JSON.parse(localStorage.getItem('tarotHistory')||'[]')};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'}));a.download=`entrenador-tarot-${todayKey()}.json`;a.click()}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.progress)throw new Error();if(!confirm('Esto reemplaza el progreso de este dispositivo por el de la copia. ¿Seguimos?'))return;saveP(d.progress);localStorage.setItem('tarotHistory',JSON.stringify(d.history||[]));toast('Copia cargada');renderProgress()}catch(err){alert('Ese archivo no es una copia del Entrenador.')}};r.readAsText(f);e.target.value=''}
+
+// Tirada real: sacar al azar y copiar
+function drawIntoSlots(){const d=drawCards(state.selections.length);document.querySelectorAll('#slots .slot').forEach((row,i)=>{row.querySelector('.combo-input').value=d[i].card;row.querySelector('.orientation').selectedIndex=d[i].rev?1:0;state.selections[i]={card:d[i].card,rev:d[i].rev}});toast('Cartas sacadas al azar')}
+function copyReading(){const txt=(state.question?state.question+'\n\n':'')+document.getElementById('result').innerText;if(navigator.clipboard)navigator.clipboard.writeText(txt).then(()=>toast('Lectura copiada')).catch(()=>alert('No se pudo copiar.'));else alert('Tu navegador no permite copiar.')}
+
+const TERA={"spreads": [{"name": "La raíz del patrón", "when": "Cuando algo se repite: el mismo tipo de pareja, el mismo conflicto en el trabajo, la misma forma de boicotearse.", "pos": ["El patrón que se repite", "Dónde empezó", "Qué me da (aunque me duela)", "Qué me cuesta", "Qué lo transforma"], "q": "¿Para qué sigue apareciendo esto en mi vida?"}, {"name": "La niña interior", "when": "Para mirar con ternura lo que se aprendió de chica y todavía organiza la forma de amar, pedir o protegerse.", "pos": ["Lo que necesité", "Lo que aprendí a hacer para estar a salvo", "Cómo aparece eso hoy", "Cómo me cuido hoy"], "q": "¿Qué parte de mi historia está hablando cuando reacciono así?"}, {"name": "Duelo y cierre", "when": "Después de una pérdida, una separación, un trabajo que terminó o una etapa que se fue.", "pos": ["Lo que perdí", "Lo que todavía sostengo", "Lo que me enseñó", "Lo que puedo soltar", "Lo que está naciendo"], "q": "¿Qué necesito para cerrar en paz?"}, {"name": "Luz y sombra", "when": "Para conocer lo que no se muestra: los rasgos que se esconden, se juzgan o se proyectan en otros.", "pos": ["Mi luz visible", "Mi sombra", "El regalo escondido en la sombra", "Cómo integrarla"], "q": "¿Qué parte mía estoy rechazando y qué podría darme si la acepto?"}, {"name": "El vínculo espejo", "when": "Cuando alguien despierta una reacción muy intensa: enojo, celos, admiración, apego.", "pos": ["Lo que veo en el otro", "Lo que eso refleja de mí", "La herida que se activa", "Mi límite sano", "Mi aprendizaje en este vínculo"], "q": "¿Qué me está mostrando esta persona sobre mí?"}, {"name": "El propósito del ciclo", "when": "En momentos de cambio, cumpleaños, comienzos de año o crisis de sentido.", "pos": ["Mi talento", "Mi herida", "La lección de este ciclo", "Lo que puedo dar a otros", "Mi recurso", "Mi próximo paso consciente"], "q": "¿Qué está queriendo crecer en mí ahora?"}], "majors": {"El Loco": ["El punto cero: el impulso de empezar", "¿Qué parte de mí quiere empezar algo nuevo aunque no tenga garantías?", "Huir hacia adelante para no mirar lo que duele.", "Confiar en el proceso sin abandonar la responsabilidad."], "El Mago": ["Descubrir que tengo recursos", "¿Qué herramientas ya tengo y no estoy usando?", "Manipular o aparentar más de lo que hay.", "Poner mis recursos al servicio de algo real."], "La Sacerdotisa": ["Escuchar la voz interior", "¿Qué sé en silencio y todavía no me animo a decir?", "Guardarme todo y desconectarme de los demás.", "Darle lugar a la intuición sin despreciar los hechos."], "La Emperatriz": ["Crear, nutrir, dar vida", "¿Qué estoy gestando y cómo lo estoy cuidando?", "Dar de más y vaciarme; cuidar para que me necesiten.", "Nutrir también lo propio: el cuerpo, el placer, la creatividad."], "El Emperador": ["Poner orden y límites", "¿Dónde necesito estructura y dónde la estoy usando para controlar?", "Rigidez, autoritarismo, miedo al caos.", "Límites claros que protegen sin encerrar."], "El Hierofante": ["Los valores que heredé", "¿Qué creencias recibí de mi familia o mi cultura y todavía me representan?", "Obedecer sin preguntar o rebelarme sin elegir.", "Elegir conscientemente qué tradición conservo."], "Los Enamorados": ["Elegir desde el corazón", "¿Qué elección vengo postergando para no perder nada?", "Quedarme en la ambivalencia para no hacerme cargo.", "Elegir en coherencia con mis valores."], "El Carro": ["Avanzar con dirección", "¿Hacia dónde quiero ir de verdad y quién maneja?", "Avanzar por inercia o por exigencia, sin rumbo propio.", "Dirigir fuerzas opuestas hacia una meta elegida."], "La Fuerza": ["Amansar lo instintivo", "¿Qué emoción intensa necesito acompañar en lugar de reprimir?", "Tragarme todo hasta explotar.", "La firmeza suave: sostener sin violentarme."], "El Ermitaño": ["Retirarme para encontrarme", "¿Qué respuesta solo puedo encontrar en soledad?", "Aislarme por miedo al vínculo.", "Volver al mundo con una luz propia para compartir."], "La Rueda de la Fortuna": ["Aceptar los ciclos", "¿Qué parte de esta situación no depende de mí, y qué sí?", "Sentirme víctima del destino.", "Fluir con los cambios sin soltar mi centro."], "La Justicia": ["Hacerme cargo", "¿Qué consecuencia de mis decisiones estoy evitando mirar?", "Culpa, autojuicio o ponerme a juzgar a otros.", "Responsabilidad sin castigo: equilibrio entre dar y recibir."], "El Colgado": ["Ver desde otro lugar", "¿Qué pasa si dejo de forzar y miro esto al revés?", "Sacrificarme para que me quieran; quedarme suspendida.", "La pausa elegida que cambia la perspectiva."], "La Muerte": ["Dejar morir lo que terminó", "¿Qué etapa ya terminó y sigo sosteniendo?", "Aferrarme a lo que ya no tiene vida.", "Soltar para que algo nuevo pueda nacer."], "La Templanza": ["Integrar y sanar", "¿Qué partes mías necesitan conversar en lugar de pelearse?", "Los extremos: todo o nada.", "El punto medio que se construye con paciencia."], "El Diablo": ["Mirar mis ataduras", "¿A qué estoy atada y qué gano quedándome ahí?", "Dependencias, adicciones, vínculos que me consumen.", "Reconocer el deseo sin dejar que me gobierne."], "La Torre": ["Lo que se derrumba", "¿Qué estructura de mi vida ya no se sostenía?", "Resistir lo inevitable y quedar bajo los escombros.", "Dejar caer lo falso y construir sobre lo verdadero."], "La Estrella": ["La esperanza después de la tormenta", "¿Qué me devuelve la fe en mí misma?", "Esperar que todo se arregle solo.", "Sanar a mi ritmo, con confianza y sin apuro."], "La Luna": ["Atravesar los miedos", "¿Qué miedo está tiñendo la forma en que veo esto?", "Confundir intuición con angustia; imaginar lo peor.", "Atravesar la confusión sin decidir desde el miedo."], "El Sol": ["Mostrarme como soy", "¿Qué parte de mí quiere salir a la luz?", "Necesitar brillar para valer.", "La alegría simple de ser auténtica."], "El Juicio": ["Despertar y renacer", "¿A qué llamado interno estoy lista para responder?", "Juzgarme por el pasado en lugar de aprender de él.", "Perdonarme y elegir una nueva versión de mí."], "El Mundo": ["Completar el ciclo", "¿Qué cierro hoy con orgullo y qué me llevo?", "No poder celebrar ni cerrar nada.", "Integrar la experiencia y empezar un viaje nuevo."]}, "numbers": {"As": ["La semilla", "Algo nuevo quiere nacer en este plano. ¿Le estoy haciendo lugar?"], "2": ["La elección", "Dos fuerzas buscan equilibrio. ¿Qué necesito balancear o decidir?"], "3": ["La primera expansión", "Lo iniciado empieza a crecer. ¿Con quién lo comparto?"], "4": ["La estabilidad", "Llega una base firme, o un estancamiento. ¿Me sostiene o me encierra?"], "5": ["La crisis", "Algo se desordena para poder crecer. ¿Qué aprendizaje trae esta incomodidad?"], "6": ["La armonía", "Después de la crisis, un nuevo equilibrio. ¿Qué doy y qué recibo?"], "7": ["La prueba", "Toca revisar, defender o elegir. ¿Qué estoy dispuesta a sostener?"], "8": ["El movimiento", "Energía en acción y práctica. ¿Hacia dónde pongo el esfuerzo?"], "9": ["La culminación interior", "Casi al final, mirando hacia adentro. ¿Qué siento al ver lo recorrido?"], "10": ["El final del ciclo", "Algo se completa o se vuelve demasiado. ¿Qué cierro para volver a empezar?"], "Paje": ["La aprendiz", "La mirada curiosa del que empieza. ¿Qué estoy aprendiendo con humildad?"], "Caballero": ["La búsqueda", "El impulso de ir hacia algo. ¿Voy con dirección o huyendo?"], "Reina": ["La maestría hacia adentro", "Dominio sereno y receptivo. ¿Cómo cuido esto desde mi centro?"], "Rey": ["La maestría hacia afuera", "Dominio que se pone al servicio. ¿Cómo lo comparto con responsabilidad?"]}, "area": {"Bastos": "el deseo y la acción", "Copas": "las emociones y los vínculos", "Espadas": "los pensamientos y las palabras", "Oros": "el cuerpo, el trabajo y lo material"}, "derivar": ["Habla de lastimarse, de no querer vivir o de que \"sería mejor desaparecer\".", "Cuenta una situación de violencia actual, propia o de un menor.", "Hay consumo de alcohol o drogas que está dañando su vida.", "Atraviesa una crisis de angustia que no cede, o lleva semanas sin dormir ni comer bien.", "Pregunta por un diagnóstico, un tratamiento médico o si dejar una medicación."]};
+// Módulo terapéutico (oferta post-compra): se habilita con su propio código
+const CODIGOS_TERA=['ESPEJO21'];
+function teraOn(){try{return CODIGOS_TERA.includes(localStorage.getItem('tt_tera'))}catch(e){return false}}
+let teraBase=null;
+function addTeraSpreads(){if(teraBase!==null)return;teraBase=spreads.length;TERA.spreads.forEach((s,k)=>{spreads.push(['🌙 '+s.name,s.pos]);const i=teraBase+k,el=document.createElement('div');el.className='spread';el.innerHTML=`<b>🌙 ${escapeHTML(s.name)}</b><br><small>${s.pos.length} posiciones · terapéutica</small>`;el.onclick=()=>{document.querySelectorAll('.spread').forEach(x=>x.classList.remove('on'));el.classList.add('on');state.spread=i};document.getElementById('spreads').appendChild(el)})}
+function unlockTera(){const v=document.getElementById('teraCode').value.trim().toUpperCase();if(CODIGOS_TERA.includes(v)){try{localStorage.setItem('tt_tera',v)}catch(e){}addTeraSpreads();toast('Módulo terapéutico habilitado');renderTera()}else document.getElementById('teraErr').textContent='Ese código no es válido. Lo encuentras en el email de tu Edición terapéutica.'}
+function evoFor(name){const mj=TERA.majors[name];if(mj)return {stage:mj[0],q:mj[1],shadow:mj[2],integ:mj[3]};const d=cardParts(name);if(d.type!=='minor')return null;const n=TERA.numbers[d.rank];return {stage:`${n[0]} en ${TERA.area[d.suit]}`,q:n[1],shadow:'',integ:''}}
+function evolutiveBlock(){const pos=spreads[state.spread][1];const items=state.selections.map((s,i)=>{const v=evoFor(s.card);if(!v)return'';return `<div class="relation"><b>${escapeHTML(pos[i])} · ${escapeHTML(s.card)}</b><span class="badge-soft">${escapeHTML(v.stage)}</span><p>❓ ${escapeHTML(v.q)}</p>${v.shadow?`<p class="muted" style="font-size:14px">Sombra: ${escapeHTML(v.shadow)} · Integración: ${escapeHTML(v.integ)}</p>`:''}</div>`}).join('');
+ return `<div class="block" style="border-color:#3b5a7a"><span class="tag">🌙 LECTURA EVOLUTIVA</span><h3>Qué proceso interno muestra cada carta</h3><p class="muted">Devuelve la lectura en cinco pasos: espejo, patrón, recurso, pregunta abierta y acción mínima.</p><div class="relations">${items}</div></div>`}
+function renderTera(){const b=document.getElementById('teraBox');
+ if(!teraOn()){b.innerHTML=`<div class="card"><span class="tag">EDICIÓN TERAPÉUTICA</span><h3>Lleva tus lecturas a otro nivel</h3><p class="muted">Seis tiradas terapéuticas (la raíz del patrón, la niña interior, duelo y cierre, luz y sombra, el vínculo espejo y el propósito del ciclo) y una lectura evolutiva automática de cada carta: la etapa del proceso, la pregunta para la persona y la sombra a mirar.</p><div class="formrow" style="max-width:360px"><label>¿Ya tienes tu código?</label><input class="input" id="teraCode" placeholder="CÓDIGO" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')unlockTera()"><div id="teraErr" style="color:#ffb7c5;font-size:14px"></div></div><button class="cta" onclick="unlockTera()">Habilitar</button></div>`;return}
+ b.innerHTML=`<div class="notice">Estas tiradas leen procesos internos. No son terapia ni reemplazan a un profesional: si aparece una señal de alerta, deja las cartas y deriva.</div>
+ <div class="grid">${TERA.spreads.map((s,k)=>`<div class="card"><span class="tag">${s.pos.length} CARTAS</span><h3>${escapeHTML(s.name)}</h3><p class="muted" style="font-size:14px">${escapeHTML(s.when)}</p><p style="font-size:14px">${s.pos.map((p,i)=>`<b>${i+1}.</b> ${escapeHTML(p)}`).join('<br>')}</p><div class="row2"><button class="cta" onclick="practiceTera(${k})">Practicar</button><button class="ghost" onclick="readTera(${teraBase+k})">Leer mi tirada</button></div></div>`).join('')}</div>
+ <div class="card" style="margin-top:18px"><h3>El viaje del Loco</h3><p class="muted">Cuando aparece un Arcano Mayor, pregúntate en qué etapa del viaje está quien consulta.</p><div class="relations">${Object.entries(TERA.majors).map(([n,v])=>`<div class="relation"><b>${escapeHTML(n)}</b><span class="badge-soft">${escapeHTML(v[0])}</span><p>❓ ${escapeHTML(v[1])}</p></div>`).join('')}</div></div>
+ <div class="card" style="margin-top:18px"><h3>Cuándo frenar y derivar</h3><ul>${TERA.derivar.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul></div>`}
+function practiceTera(k){startPractice({spread:teraBase+k,topic:'Autoconocimiento',question:TERA.spreads[k].q})}
+function readTera(i){navigate('tirada');state.topic='Autoconocimiento';document.querySelectorAll('#topics .chip').forEach(c=>c.classList.toggle('on',c.textContent==='Autoconocimiento'));document.querySelectorAll('#spreads .spread').forEach((el,k)=>el.classList.toggle('on',k===i));state.spread=i}
+if(teraOn())addTeraSpreads();
+
+renderLibrary();
+checkAccess();renderHome();
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body></html>
