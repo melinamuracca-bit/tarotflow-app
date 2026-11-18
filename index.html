@@ -514,8 +514,8 @@ function logActivity(){const p=loadP(),k=todayKey();if(!p.activity.includes(k)){
 function streak(){const set=new Set(loadP().activity);const d=new Date();let n=0;if(!set.has(todayKey(d)))d.setDate(d.getDate()-1);while(set.has(todayKey(d))){n++;d.setDate(d.getDate()-1)}return n}
 
 // Acceso
-function unlock(){const v=document.getElementById('gateCode').value.trim().toUpperCase();if(CODIGOS.includes(v)){try{localStorage.setItem('tt_access',v)}catch(e){}document.getElementById('gate').style.display='none';renderHome()}else document.getElementById('gateErr').textContent='Ese código no es válido. Revisa el email de tu compra.'}
-function checkAccess(){try{const q=new URLSearchParams(location.search);const c=(q.get('codigo')||q.get('code')||'').trim().toUpperCase();if(CODIGOS.includes(c))localStorage.setItem('tt_access',c);const t=(q.get('tera')||'').trim().toUpperCase();if(CODIGOS_TERA.includes(t))localStorage.setItem('tt_tera',t)}catch(e){}let ok=false;try{ok=CODIGOS.includes(localStorage.getItem('tt_access'))}catch(e){}document.getElementById('gate').style.display=ok?'none':'grid'}
+function unlock(){const v=document.getElementById('gateCode').value.trim().toUpperCase();if(CODIGOS.includes(v)){try{localStorage.setItem('tt_access_v2',v)}catch(e){}document.getElementById('gate').style.display='none';renderHome()}else document.getElementById('gateErr').textContent='Ese código no es válido. Revisa el email de tu compra.'}
+function checkAccess(){try{const q=new URLSearchParams(location.search);const t=(q.get('tera')||'').trim().toUpperCase();if(CODIGOS_TERA.includes(t))localStorage.setItem('tt_tera',t)}catch(e){}let ok=false;try{ok=CODIGOS.includes(localStorage.getItem('tt_access_v2'))}catch(e){}document.getElementById('gate').style.display=ok?'none':'grid'}
 
 // Práctica guiada: lees tú, después comparas
 const PRACTICE_Q={
